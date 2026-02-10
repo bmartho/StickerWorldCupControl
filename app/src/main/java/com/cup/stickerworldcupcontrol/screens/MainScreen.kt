@@ -21,10 +21,10 @@ fun MainScreen(
     val cells by appViewModel.listCells.collectAsState(initial = emptyList())
     LazyVerticalGrid(
         modifier = Modifier.padding(paddingValues),
-        columns = GridCells.Fixed(10),
+        columns = GridCells.Fixed(8),
         contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+        horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         items(cells.size) { index ->
             with(cells[index]) {
@@ -34,7 +34,9 @@ fun MainScreen(
                         text = text,
                         isSelected = isSelected
                     )
-                )
+                ) {
+                    appViewModel.onCellClick(cells[index])
+                }
             }
         }
     }

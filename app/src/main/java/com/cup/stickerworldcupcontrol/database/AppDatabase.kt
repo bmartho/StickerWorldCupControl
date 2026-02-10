@@ -51,7 +51,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         private fun buildCells(): List<Cell> {
             val list = mutableListOf<Cell>()
-            for (i in 0..400) {
+            for (i in 1..980) {
                 list.add(
                     Cell(
                         id = i,
@@ -60,13 +60,6 @@ abstract class AppDatabase : RoomDatabase() {
                     )
                 )
             }
-            list.add(
-                Cell(
-                    id = 401,
-                    text = 401.toString(),
-                    isSelected = true
-                )
-            )
             return list
         }
     }
