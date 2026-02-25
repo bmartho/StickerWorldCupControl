@@ -2,6 +2,7 @@ package com.cup.stickerworldcupcontrol.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -20,7 +21,8 @@ import androidx.compose.runtime.setValue
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarComponent(
-    showResetDialog: () -> Unit
+    showResetDialog: () -> Unit,
+    shareDialog: () -> Unit
 ) {
     var showMenu by remember { mutableStateOf(false) }
 
@@ -34,6 +36,15 @@ fun TopBarComponent(
             },
         actions =
             {
+                IconButton(onClick = {
+                    shareDialog()
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = "Compartilhar"
+                    )
+                }
+
                 IconButton(onClick = { showMenu = !showMenu }) {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
