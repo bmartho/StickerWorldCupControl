@@ -9,13 +9,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -32,12 +33,23 @@ fun CellComponent(
     onIncreaseRepeated: () -> Unit,
     onDecreaseRepeated: () -> Unit,
 ) {
+    val backgroundColor = remember(cell.isSelected, cell.numberRepeated, isRepeatedLayout) {
+        if (isRepeatedLayout) {
+            if (cell.numberRepeated > 0) Color.Gray else Color.White
+        } else {
+            if (cell.isSelected) Color.Green else Color.White
+        }
+    }
+
+    val baseModifier = Modifier
+        .height(90.dp)
+        .drawBehind {
+            drawRect(backgroundColor)
+        }
+
     if (isRepeatedLayout) {
-        val backgroundColor = if (cell.numberRepeated > 0) Color.Gray else Color.White
         Column(
-            modifier = Modifier
-                .height(90.dp)
-                .background(backgroundColor),
+            modifier = baseModifier,
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -45,16 +57,15 @@ fun CellComponent(
                 text = cell.text,
                 color = Color.Black,
                 maxLines = 1,
-                fontSize = 10.sp,
+                fontSize = 14.sp,
                 lineHeight = 4.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.W900,
                 style = LocalTextStyle.current.copy(
                     platformStyle = PlatformTextStyle(
-                        includeFontPadding = false // Ajuda a manter o texto no centro
+                        includeFontPadding = false
                     )
                 )
             )
-            HorizontalDivider()
 
             ButtonCellComponent(
                 modifier = Modifier
@@ -79,13 +90,10 @@ fun CellComponent(
             )
         }
     } else {
-        val backgroundColor = if (cell.isSelected) Color.Green else Color.White
         Box(
-            modifier = Modifier
-                .height(90.dp)
-                .background(backgroundColor)
+            modifier = baseModifier
                 .clickable(onClick = onClick),
-            contentAlignment = androidx.compose.ui.Alignment.Center
+            contentAlignment = Alignment.Center
         ) {
             Text(
                 text = cell.text,
@@ -105,7 +113,7 @@ fun ButtonCellComponent(
 ) {
     Box(
         modifier = modifier
-            .size(24.dp)
+            .size(22.dp)
             .clip(CircleShape)
             .background(Color(0xFFE0E0E0))
             .clickable {
@@ -117,7 +125,7 @@ fun ButtonCellComponent(
             text = text,
             color = Color.Black,
             maxLines = 1,
-            fontSize = 13.sp,
+            fontSize = 12.sp,
             textAlign = TextAlign.Center,
             style = LocalTextStyle.current.copy(
                 platformStyle = PlatformTextStyle(

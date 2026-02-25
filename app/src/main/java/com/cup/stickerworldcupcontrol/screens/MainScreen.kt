@@ -12,6 +12,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -52,20 +53,24 @@ fun MainScreen(
             horizontalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             items(
-                cells.size,
-                key = { index -> cells[index].id }) { index ->
+                count = cells.size,
+                key = { index -> cells[index].id },
+                contentType = { "sticker" }) { index ->
+                val cell = cells[index]
+                val isRepeatedTab by remember {
+                    derivedStateOf { selectedTabIndex == 1 }
+                }
+
+                val onCellClick = remember(cell) { { appViewModel.onCellClick(cell) } }
+                val onIncrease = remember(cell) { { appViewModel.onIncreaseRepeatedClick(cell) } }
+                val onDecrease = remember(cell) { { appViewModel.onDecreaseRepeatedClick(cell) } }
+
                 CellComponent(
                     cell = cells[index],
-                    isRepeatedLayout = selectedTabIndex == 1,
-                    onClick = {
-                        appViewModel.onCellClick(cells[index])
-                    },
-                    onIncreaseRepeated = {
-                        appViewModel.onIncreaseRepeatedClick(cells[index])
-                    },
-                    onDecreaseRepeated = {
-                        appViewModel.onDecreaseRepeatedClick(cells[index])
-                    }
+                    isRepeatedLayout = isRepeatedTab,
+                    onClick = onCellClick,
+                    onIncreaseRepeated = onIncrease,
+                    onDecreaseRepeated = onDecrease
                 )
             }
         }
