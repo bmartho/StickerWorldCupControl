@@ -56,6 +56,7 @@ abstract class AppDatabase : RoomDatabase() {
                     Cell(
                         id = i,
                         text = i.toString(),
+                        numberRepeated = 0,
                         isSelected = false
                     )
                 )

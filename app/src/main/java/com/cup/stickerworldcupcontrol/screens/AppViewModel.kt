@@ -17,6 +17,32 @@ class AppViewModel(private val dao: CellDao) : ViewModel() {
         }
     }
 
+    fun onIncreaseRepeatedClick(cell: Cell) {
+        if (cell.numberRepeated >= 9) {
+            return
+        }
+
+        viewModelScope.launch {
+            dao.updateCell(cell.copy(numberRepeated = cell.numberRepeated + 1))
+        }
+    }
+
+    fun onDecreaseRepeatedClick(cell: Cell) {
+        if (cell.numberRepeated <= 0) {
+            return
+        }
+
+        viewModelScope.launch {
+            dao.updateCell(cell.copy(numberRepeated = cell.numberRepeated - 1))
+        }
+    }
+
+    fun cleanAlbum() {
+        viewModelScope.launch {
+            dao.cleanAll()
+        }
+    }
+
     class Factory(private val cellDao: CellDao) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(AppViewModel::class.java)) {

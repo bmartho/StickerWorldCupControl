@@ -19,6 +19,6 @@ interface CellDao {
     @Update
     suspend fun updateCell(cell: Cell)
 
-    @Query("DELETE FROM cells")
-    suspend fun deleteAll()
+    @Query("UPDATE cells SET isSelected = 0")
+    suspend fun cleanAll()
 }
