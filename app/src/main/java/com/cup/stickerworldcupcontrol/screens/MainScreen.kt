@@ -1,14 +1,19 @@
 package com.cup.stickerworldcupcontrol.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -17,12 +22,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.cup.stickerworldcupcontrol.R
 import com.cup.stickerworldcupcontrol.components.AdBanner
 import com.cup.stickerworldcupcontrol.components.CellComponent
+import com.cup.stickerworldcupcontrol.ui.theme.TabIndicator
 
 @Composable
 fun MainScreen(
@@ -41,7 +48,14 @@ fun MainScreen(
         TabRow(
             selectedTabIndex = selectedTabIndex,
             containerColor = MaterialTheme.colorScheme.surface,
-            contentColor = MaterialTheme.colorScheme.primary
+            contentColor = MaterialTheme.colorScheme.primary,
+            indicator = { tabPositions ->
+                TabRowDefaults.SecondaryIndicator(
+                    modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
+                    height = 4.dp,
+                    color = TabIndicator
+                )
+            }
         ) {
             titles.forEachIndexed { index, title ->
                 Tab(
@@ -52,32 +66,51 @@ fun MainScreen(
             }
         }
 
-        LazyVerticalGrid(
-            modifier = Modifier.weight(1f),
-            columns = GridCells.Fixed(8),
-            verticalArrangement = Arrangement.spacedBy(2.dp),
-            horizontalArrangement = Arrangement.spacedBy(2.dp)
-        ) {
-            items(
-                count = cells.size,
-                key = { index -> cells[index].id },
-                contentType = { "sticker" }) { index ->
-                val cell = cells[index]
-                val isRepeatedTab by remember {
-                    derivedStateOf { selectedTabIndex == 1 }
+        Box(modifier = Modifier.weight(1f)) {
+            if (cells.isEmpty()) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.loading_stickers),
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(bottom = 16.dp)
+                    )
+                    CircularProgressIndicator()
                 }
+            } else {
+                LazyVerticalGrid(
+                    modifier = Modifier.fillMaxSize(),
+                    columns = GridCells.Fixed(8),
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                    horizontalArrangement = Arrangement.spacedBy(2.dp)
+                ) {
+                    items(
+                        count = cells.size,
+                        key = { index -> cells[index].id },
+                        contentType = { "sticker" }) { index ->
+                        val cell = cells[index]
+                        val isRepeatedTab by remember {
+                            derivedStateOf { selectedTabIndex == 1 }
+                        }
 
-                val onCellClick = remember(cell) { { appViewModel.onCellClick(cell) } }
-                val onIncrease = remember(cell) { { appViewModel.onIncreaseRepeatedClick(cell) } }
-                val onDecrease = remember(cell) { { appViewModel.onDecreaseRepeatedClick(cell) } }
+                        val onCellClick = remember(cell) { { appViewModel.onCellClick(cell) } }
+                        val onIncrease =
+                            remember(cell) { { appViewModel.onIncreaseRepeatedClick(cell) } }
+                        val onDecrease =
+                            remember(cell) { { appViewModel.onDecreaseRepeatedClick(cell) } }
 
-                CellComponent(
-                    cell = cells[index],
-                    isRepeatedLayout = isRepeatedTab,
-                    onClick = onCellClick,
-                    onIncreaseRepeated = onIncrease,
-                    onDecreaseRepeated = onDecrease
-                )
+                        CellComponent(
+                            cell = cells[index],
+                            isRepeatedLayout = isRepeatedTab,
+                            onClick = onCellClick,
+                            onIncreaseRepeated = onIncrease,
+                            onDecreaseRepeated = onDecrease
+                        )
+                    }
+                }
             }
         }
 

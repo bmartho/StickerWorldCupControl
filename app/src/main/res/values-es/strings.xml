@@ -20,6 +20,7 @@
 
     <string name="tab_collected">Obtenidas</string>
     <string name="tab_repeated">Repetidas</string>
+    <string name="loading_stickers">Cargando laminitas…</string>
 
     <string name="share_header_missing">Laminitas faltantes:\n\n</string>
     <string name="share_header_repeated">Laminitas repetidas:\n\n</string>

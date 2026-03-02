@@ -24,6 +24,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cup.stickerworldcupcontrol.database.dao.models.Cell
+import com.cup.stickerworldcupcontrol.ui.theme.RepeatedSticker
+import com.cup.stickerworldcupcontrol.ui.theme.SelectedSticker
 
 @Composable
 fun CellComponent(
@@ -35,9 +37,9 @@ fun CellComponent(
 ) {
     val backgroundColor = remember(cell.isSelected, cell.numberRepeated, isRepeatedLayout) {
         if (isRepeatedLayout) {
-            if (cell.numberRepeated > 0) Color.Gray else Color.White
+            if (cell.numberRepeated > 0) RepeatedSticker else Color.White
         } else {
-            if (cell.isSelected) Color.Green else Color.White
+            if (cell.isSelected) SelectedSticker else Color.White
         }
     }
 

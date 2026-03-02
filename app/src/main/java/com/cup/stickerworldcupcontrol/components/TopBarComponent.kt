@@ -19,6 +19,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import com.cup.stickerworldcupcontrol.R
+import com.cup.stickerworldcupcontrol.ui.theme.Primary
+import com.cup.stickerworldcupcontrol.ui.theme.Secondary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,8 +78,8 @@ fun TopBarComponent(
                 }
             },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
+            containerColor = Secondary,
+            titleContentColor = Primary,
         )
     )
 }
