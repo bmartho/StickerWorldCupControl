@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Controle de figurinhas</string>
+
+    <string name="about_title">Sobre</string>
+    <string name="about_creator">Criador: Android Brothers</string>
+    <string name="about_version">Versão: %1$s</string>
+
+    <string name="reset_dialog_title">Limpar Álbum?</string>
+    <string name="reset_dialog_text">Isso irá reinicializar seu álbum. Você terá que começar do zero. Esta ação não poderá ser desfeita.</string>
+
+    <string name="share_dialog_title">Quais informações você gostaria de compartilhar?</string>
+    <string name="share_option_missing">Figurinhas faltantes</string>
+    <string name="share_option_repeated">Figurinhas repetidas</string>
+    <string name="share_option_repeated_count">Incluir quantidade de repetidas</string>
+
+    <string name="content_desc_share">Compartilhar</string>
+    <string name="content_desc_options">Opções</string>
+    <string name="menu_clear_album">Limpar Álbum</string>
+    <string name="menu_about">Sobre</string>
+
+    <string name="tab_collected">Coladas</string>
+    <string name="tab_repeated">Repetidas</string>
+
+    <string name="share_header_missing">Figurinhas faltantes:\n\n</string>
+    <string name="share_header_repeated">Figurinhas repetidas:\n\n</string>
+    <string name="share_chooser_title">Compartilhar via</string>
+
+    <string name="btn_share">Compartilhar</string>
+    <string name="btn_clear_all">Limpar Tudo</string>
+    <string name="btn_cancel">Cancelar</string>
+</resources>

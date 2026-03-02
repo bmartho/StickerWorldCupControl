@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Control de Laminitas</string>
+
+    <string name="about_title">Acerca de</string>
+    <string name="about_creator">Creador: Android Brothers</string>
+    <string name="about_version">Versión: %1$s</string>
+
+    <string name="reset_dialog_title">¿Limpiar Álbum?</string>
+    <string name="reset_dialog_text">Esto reiniciará tu álbum y tendrás que empezar de cero. Esta acción no se puede deshacer.</string>
+
+    <string name="share_dialog_title">¿Qué información te gustaría compartir?</string>
+    <string name="share_option_missing">Laminitas faltantes</string>
+    <string name="share_option_repeated">Laminitas repetidas</string>
+    <string name="share_option_repeated_count">Incluir cantidad de repetidas</string>
+
+    <string name="content_desc_share">Compartir</string>
+    <string name="content_desc_options">Opciones</string>
+    <string name="menu_clear_album">Limpiar Álbum</string>
+    <string name="menu_about">Acerca de</string>
+
+    <string name="tab_collected">Obtenidas</string>
+    <string name="tab_repeated">Repetidas</string>
+
+    <string name="share_header_missing">Laminitas faltantes:\n\n</string>
+    <string name="share_header_repeated">Laminitas repetidas:\n\n</string>
+    <string name="share_chooser_title">Compartir vía</string>
+
+    <string name="btn_share">Compartir</string>
+    <string name="btn_ok" translatable="false">OK</string>
+    <string name="btn_clear_all">Limpiar Todo</string>
+    <string name="btn_cancel">Cancelar</string>
+</resources>

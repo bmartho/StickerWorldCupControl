@@ -18,7 +18,9 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.cup.stickerworldcupcontrol.R
 import com.cup.stickerworldcupcontrol.components.AdBanner
 import com.cup.stickerworldcupcontrol.components.CellComponent
 
@@ -29,7 +31,11 @@ fun MainScreen(
 ) {
     val cells by appViewModel.listCells.collectAsState(initial = emptyList())
     var selectedTabIndex by remember { mutableIntStateOf(0) }
-    val titles = listOf("Figurinhas", "Faltantes")
+
+    val titles = listOf(
+        stringResource(id = R.string.tab_collected),
+        stringResource(id = R.string.tab_repeated)
+    )
 
     Column(modifier = Modifier.padding(paddingValues)) {
         TabRow(

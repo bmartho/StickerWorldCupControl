@@ -14,7 +14,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.lifecycleScope
+import com.cup.stickerworldcupcontrol.components.AboutDialog
 import com.cup.stickerworldcupcontrol.components.ResetConfirmationDialog
 import com.cup.stickerworldcupcontrol.components.ShareDialog
 import com.cup.stickerworldcupcontrol.components.TopBarComponent
@@ -47,6 +49,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             var showResetDialog by remember { mutableStateOf(false) }
             var shareDialog by remember { mutableStateOf(false) }
+            var aboutDialog by remember { mutableStateOf(false) }
+            if (aboutDialog) {
+                AboutDialog(
+                    onConfirm = {
+                        aboutDialog = false
+                    }
+                )
+            }
+
             if (showResetDialog) {
                 ResetConfirmationDialog(
                     onConfirm = {
@@ -59,12 +70,16 @@ class MainActivity : ComponentActivity() {
 
             if (shareDialog) {
                 val cells by viewModel.listCells.collectAsState(initial = emptyList())
+                val headerMissing = stringResource(id = R.string.share_header_missing)
+                val headerRepeated = stringResource(id = R.string.share_header_repeated)
+                val chooserTitle = stringResource(id = R.string.share_chooser_title)
+
                 ShareDialog(
                     onConfirm = { shareMissing, shareRepeated, shareNumberRepeated ->
                         var shareText = ""
 
                         if (shareMissing) {
-                            shareText += "Figurinhas faltantes:\n\n"
+                            shareText += headerMissing
                             shareText += cells
                                 .filter { !it.isSelected }
                                 .joinToString(", ") { it.text }
@@ -75,7 +90,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         if (shareRepeated) {
-                            shareText += "Figurinhas repetidas:\n\n"
+                            shareText += headerRepeated
                             shareText += cells
                                 .filter { it.numberRepeated > 0 }
                                 .joinToString(", ") {
@@ -95,7 +110,7 @@ class MainActivity : ComponentActivity() {
                             type = "text/plain"
                             putExtra(Intent.EXTRA_TEXT, shareText)
                         }
-                        startActivity(Intent.createChooser(intent, "Compartilhar via"))
+                        startActivity(Intent.createChooser(intent, chooserTitle))
                         shareDialog = false
                     },
                     onDismiss = { shareDialog = false }
@@ -112,6 +127,9 @@ class MainActivity : ComponentActivity() {
                             },
                             shareDialog = {
                                 shareDialog = true
+                            },
+                            aboutDialog = {
+                                aboutDialog = true
                             }
                         )
                     }

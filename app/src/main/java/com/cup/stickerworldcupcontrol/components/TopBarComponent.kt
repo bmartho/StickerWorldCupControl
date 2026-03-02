@@ -17,12 +17,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
+import com.cup.stickerworldcupcontrol.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarComponent(
     showResetDialog: () -> Unit,
-    shareDialog: () -> Unit
+    shareDialog: () -> Unit,
+    aboutDialog: () -> Unit
 ) {
     var showMenu by remember { mutableStateOf(false) }
 
@@ -30,7 +33,7 @@ fun TopBarComponent(
         title =
             {
                 Text(
-                    text = "Sticker Control",
+                    text = stringResource(id = R.string.app_name),
                     style = MaterialTheme.typography.titleLarge
                 )
             },
@@ -41,14 +44,14 @@ fun TopBarComponent(
                 }) {
                     Icon(
                         imageVector = Icons.Default.Share,
-                        contentDescription = "Compartilhar"
+                        contentDescription = stringResource(id = R.string.content_desc_share)
                     )
                 }
 
                 IconButton(onClick = { showMenu = !showMenu }) {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
-                        contentDescription = "Opções"
+                        contentDescription = stringResource(id = R.string.content_desc_options)
                     )
                 }
 
@@ -57,15 +60,18 @@ fun TopBarComponent(
                     onDismissRequest = { showMenu = false }
                 ) {
                     DropdownMenuItem(
-                        text = { Text("Limpar Álbum") },
+                        text = { Text(text = stringResource(id = R.string.menu_clear_album)) },
                         onClick = {
                             showResetDialog()
                             showMenu = false
                         }
                     )
                     DropdownMenuItem(
-                        text = { Text("Sobre") },
-                        onClick = { showMenu = false }
+                        text = { Text(text = stringResource(id = R.string.menu_about)) },
+                        onClick = {
+                            aboutDialog()
+                            showMenu = false
+                        }
                     )
                 }
             },

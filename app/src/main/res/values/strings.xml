@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">StickerWorldCupControl</string>
+    <string name="app_name">Sticker Control</string>
+
+    <string name="about_title">About</string>
+    <string name="about_creator">Creator: Android Brothers</string>
+    <string name="about_version">Version: %1$s</string>
+
+    <string name="reset_dialog_title">Clear Album?</string>
+    <string name="reset_dialog_text">This will reset your album. You will have to start from scratch. This action cannot be undone.</string>
+
+    <string name="share_dialog_title">What information would you like to share?</string>
+    <string name="share_option_missing">Missing stickers</string>
+    <string name="share_option_repeated">Repeated stickers</string>
+    <string name="share_option_repeated_count">Include number of repeats</string>
+
+    <string name="content_desc_share">Share</string>
+    <string name="content_desc_options">Options</string>
+    <string name="menu_clear_album">Clear Album</string>
+    <string name="menu_about">About</string>
+
+    <string name="tab_collected">Collected</string>
+    <string name="tab_repeated">Repeated</string>
+
+    <string name="share_header_missing">Missing stickers:\n\n</string>
+    <string name="share_header_repeated">Repeated stickers:\n\n</string>
+    <string name="share_chooser_title">Share via</string>
+
+    <string name="btn_share">Share</string>
+    <string name="btn_ok" translatable="false">OK</string>
+    <string name="btn_clear_all">Clear All</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>
