@@ -21,6 +21,7 @@
     <string name="tab_collected">Collected</string>
     <string name="tab_repeated">Repeated</string>
     <string name="loading_stickers">Loading stickers…</string>
+    <string name="total_stickers">Total collected: %1$s/%2$s (%3$s)</string>
 
     <string name="share_header_missing">Missing stickers:\n\n</string>
     <string name="share_header_repeated">Repeated stickers:\n\n</string>

@@ -21,6 +21,7 @@
     <string name="tab_collected">Coladas</string>
     <string name="tab_repeated">Repetidas</string>
     <string name="loading_stickers">Carregando figurinhas…</string>
+    <string name="total_stickers">Total coladas: %1$s/%2$s (%3$s)</string>
 
     <string name="share_header_missing">Figurinhas faltantes:\n\n</string>
     <string name="share_header_repeated">Figurinhas repetidas:\n\n</string>

@@ -1,10 +1,12 @@
 package com.cup.stickerworldcupcontrol.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -26,9 +28,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.cup.stickerworldcupcontrol.R
 import com.cup.stickerworldcupcontrol.components.AdBanner
 import com.cup.stickerworldcupcontrol.components.CellComponent
+import com.cup.stickerworldcupcontrol.ui.theme.Secondary
 import com.cup.stickerworldcupcontrol.ui.theme.TabIndicator
 
 @Composable
@@ -38,6 +42,12 @@ fun MainScreen(
 ) {
     val cells by appViewModel.listCells.collectAsState(initial = emptyList())
     var selectedTabIndex by remember { mutableIntStateOf(0) }
+    val collectedNumber = cells.count { it.isSelected }
+    val percentage = if (cells.isNotEmpty()) {
+        (collectedNumber.toFloat() / cells.size.toFloat()) * 100
+    } else {
+        0f
+    }
 
     val titles = listOf(
         stringResource(id = R.string.tab_collected),
@@ -45,6 +55,24 @@ fun MainScreen(
     )
 
     Column(modifier = Modifier.padding(paddingValues)) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Secondary)
+                .padding(bottom = 4.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = stringResource(
+                    R.string.total_stickers,
+                    collectedNumber,
+                    cells.size,
+                    "${"%.0f".format(percentage)}%"
+                ),
+                fontSize = 13.sp
+            )
+        }
+
         TabRow(
             selectedTabIndex = selectedTabIndex,
             containerColor = MaterialTheme.colorScheme.surface,
