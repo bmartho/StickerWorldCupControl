@@ -86,8 +86,8 @@ fun CellComponent(
                 text = cell.numberRepeated.toString(),
                 color = Color.Black,
                 maxLines = 1,
-                fontSize = 14.sp,
-                lineHeight = 22.sp
+                fontSize = 16.sp,
+                lineHeight = 24.sp
             )
 
             ButtonCellComponent(

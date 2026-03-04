@@ -14,6 +14,7 @@ import com.cup.stickerworldcupcontrol.ui.theme.ButtonColor
 
 @Composable
 fun AboutDialog(
+    appVersion: String,
     onConfirm: () -> Unit
 ) {
     AlertDialog(
@@ -22,7 +23,7 @@ fun AboutDialog(
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(text = stringResource(id = R.string.about_creator))
-                Text(text = stringResource(id = R.string.about_version, "1.0"))
+                Text(text = stringResource(id = R.string.about_version, appVersion))
             }
         },
         confirmButton = {

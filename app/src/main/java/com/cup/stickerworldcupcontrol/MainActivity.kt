@@ -30,6 +30,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+    val context = this
     private val db by lazy {
         AppDatabase.getDatabase(applicationContext, lifecycleScope)
     }
@@ -52,6 +53,10 @@ class MainActivity : ComponentActivity() {
             var aboutDialog by remember { mutableStateOf(false) }
             if (aboutDialog) {
                 AboutDialog(
+                    appVersion = context.packageManager.getPackageInfo(
+                        context.packageName,
+                        0
+                    ).versionName ?: "1.0",
                     onConfirm = {
                         aboutDialog = false
                     }
