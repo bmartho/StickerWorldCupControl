@@ -1,14 +1,15 @@
 package com.cup.stickerworldcupcontrol.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,22 +45,24 @@ fun CellComponent(
     }
 
     val baseModifier = Modifier
-        .height(90.dp)
+        .height(110.dp)
         .drawBehind {
             drawRect(backgroundColor)
         }
+        .border(1.dp, Color.Black)
 
     if (isRepeatedLayout) {
         Column(
             modifier = baseModifier,
-            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
+                modifier = Modifier
+                    .padding(top = 2.dp),
                 text = cell.text,
                 color = Color.Black,
                 maxLines = 1,
-                fontSize = 14.sp,
+                fontSize = 16.sp,
                 lineHeight = 4.sp,
                 fontWeight = FontWeight.W900,
                 style = LocalTextStyle.current.copy(
@@ -68,6 +71,8 @@ fun CellComponent(
                     )
                 )
             )
+
+            HorizontalDivider()
 
             ButtonCellComponent(
                 modifier = Modifier
@@ -80,13 +85,12 @@ fun CellComponent(
                 text = cell.numberRepeated.toString(),
                 color = Color.Black,
                 maxLines = 1,
-                fontSize = 10.sp,
-                lineHeight = 16.sp
+                fontSize = 14.sp,
+                lineHeight = 22.sp
             )
 
             ButtonCellComponent(
-                modifier = Modifier
-                    .padding(bottom = 4.dp),
+                modifier = Modifier,
                 text = "-",
                 onClick = onDecreaseRepeated
             )
@@ -115,7 +119,7 @@ fun ButtonCellComponent(
 ) {
     Box(
         modifier = modifier
-            .size(22.dp)
+            .size(26.dp)
             .clip(CircleShape)
             .background(Color(0xFFE0E0E0))
             .clickable {

@@ -2,6 +2,7 @@ package com.cup.stickerworldcupcontrol.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -73,28 +75,11 @@ fun MainScreen(
             )
         }
 
-        TabRow(
-            selectedTabIndex = selectedTabIndex,
-            containerColor = MaterialTheme.colorScheme.surface,
-            contentColor = MaterialTheme.colorScheme.primary,
-            indicator = { tabPositions ->
-                TabRowDefaults.SecondaryIndicator(
-                    modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                    height = 4.dp,
-                    color = TabIndicator
-                )
-            }
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .background(Color.White)
         ) {
-            titles.forEachIndexed { index, title ->
-                Tab(
-                    selected = selectedTabIndex == index,
-                    onClick = { selectedTabIndex = index },
-                    text = { Text(text = title) }
-                )
-            }
-        }
-
-        Box(modifier = Modifier.weight(1f)) {
             if (cells.isEmpty()) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -111,9 +96,10 @@ fun MainScreen(
             } else {
                 LazyVerticalGrid(
                     modifier = Modifier.fillMaxSize(),
-                    columns = GridCells.Fixed(8),
-                    verticalArrangement = Arrangement.spacedBy(2.dp),
-                    horizontalArrangement = Arrangement.spacedBy(2.dp)
+                    columns = GridCells.Fixed(5),
+                    contentPadding = PaddingValues(4.dp),
+                    verticalArrangement = spacedBy(4.dp),
+                    horizontalArrangement = spacedBy(4.dp)
                 ) {
                     items(
                         count = cells.size,
@@ -139,6 +125,27 @@ fun MainScreen(
                         )
                     }
                 }
+            }
+        }
+
+        TabRow(
+            selectedTabIndex = selectedTabIndex,
+            indicator = { tabPositions ->
+                TabRowDefaults.SecondaryIndicator(
+                    modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
+                    height = 4.dp,
+                    color = TabIndicator
+                )
+            }
+        ) {
+            titles.forEachIndexed { index, title ->
+                Tab(
+                    unselectedContentColor = Color.White,
+                    selectedContentColor = TabIndicator,
+                    selected = selectedTabIndex == index,
+                    onClick = { selectedTabIndex = index },
+                    text = { Text(text = title) }
+                )
             }
         }
 
