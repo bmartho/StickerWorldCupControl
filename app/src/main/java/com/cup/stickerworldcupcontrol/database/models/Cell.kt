@@ -8,6 +8,7 @@ data class Cell(
     @PrimaryKey
     val id: Int,
 
+    val label: String,
     val text: String,
     val numberRepeated: Int,
     val isSelected: Boolean

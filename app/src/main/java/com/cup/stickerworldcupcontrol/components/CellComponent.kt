@@ -3,6 +3,7 @@ package com.cup.stickerworldcupcontrol.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -59,10 +60,10 @@ fun CellComponent(
             Text(
                 modifier = Modifier
                     .padding(top = 2.dp),
-                text = cell.text,
+                text = "${cell.label} ${cell.text}",
                 color = Color.Black,
                 maxLines = 1,
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 lineHeight = 4.sp,
                 fontWeight = FontWeight.W900,
                 style = LocalTextStyle.current.copy(
@@ -96,16 +97,24 @@ fun CellComponent(
             )
         }
     } else {
-        Box(
+        Column(
             modifier = baseModifier
                 .clickable(onClick = onClick),
-            contentAlignment = Alignment.Center
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(
+                text = cell.label,
+                color = Color.Black,
+                maxLines = 1,
+                fontSize = 16.sp
+            )
+
             Text(
                 text = cell.text,
                 color = Color.Black,
                 maxLines = 1,
-                fontSize = 13.sp
+                fontSize = 16.sp
             )
         }
     }

@@ -21,4 +21,7 @@ interface CellDao {
 
     @Query("UPDATE cells SET isSelected = 0, numberRepeated = 0")
     suspend fun cleanAll()
+
+    @Query("DELETE FROM cells")
+    fun deleteAll()
 }
