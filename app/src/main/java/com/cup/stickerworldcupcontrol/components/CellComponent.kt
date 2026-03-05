@@ -27,7 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cup.stickerworldcupcontrol.database.dao.models.Cell
 import com.cup.stickerworldcupcontrol.ui.theme.RepeatedSticker
+import com.cup.stickerworldcupcontrol.ui.theme.RepeatedStickerStrong
 import com.cup.stickerworldcupcontrol.ui.theme.SelectedSticker
+import com.cup.stickerworldcupcontrol.ui.theme.SelectedStickerStrong
+import com.cup.stickerworldcupcontrol.ui.theme.WhiteStrong
 
 @Composable
 fun CellComponent(
@@ -38,10 +41,13 @@ fun CellComponent(
     onDecreaseRepeated: () -> Unit,
 ) {
     val backgroundColor = remember(cell.isSelected, cell.numberRepeated, isRepeatedLayout) {
-        if (isRepeatedLayout) {
-            if (cell.numberRepeated > 0) RepeatedSticker else Color.White
-        } else {
-            if (cell.isSelected) SelectedSticker else Color.White
+        val isStickerActive = if (isRepeatedLayout) cell.numberRepeated > 0 else cell.isSelected
+
+        when {
+            isStickerActive && isRepeatedLayout -> if (cell.isStrongColor) RepeatedStickerStrong else RepeatedSticker
+            isStickerActive && !isRepeatedLayout -> if (cell.isStrongColor) SelectedStickerStrong else SelectedSticker
+            cell.isStrongColor -> WhiteStrong
+            else -> Color.White
         }
     }
 
@@ -130,7 +136,7 @@ fun ButtonCellComponent(
         modifier = modifier
             .size(26.dp)
             .clip(CircleShape)
-            .background(Color(0xFFE0E0E0))
+            .background(Color(0xFFBBBABA))
             .clickable {
                 onClick()
             },

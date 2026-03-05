@@ -74,6 +74,7 @@ abstract class AppDatabase : RoomDatabase() {
             val list = mutableListOf<Cell>()
             var stickerId = 1
             var sessionNumber = 1
+            var isStrongColor = false
             for (session in listOfSessions) {
                 if (sessionNumber == 1) {
                     list.add(
@@ -82,7 +83,8 @@ abstract class AppDatabase : RoomDatabase() {
                             label = "00",
                             text = "",
                             isSelected = false,
-                            numberRepeated = 0
+                            numberRepeated = 0,
+                            isStrongColor = false
                         )
                     )
                     stickerId++
@@ -102,12 +104,14 @@ abstract class AppDatabase : RoomDatabase() {
                                 label = session.first,
                                 text = numberOfSticker,
                                 isSelected = false,
-                                numberRepeated = 0
+                                numberRepeated = 0,
+                                isStrongColor = isStrongColor
                             )
                         )
                         stickerId++
                     }
                 }
+                isStrongColor = !isStrongColor
                 sessionNumber++
             }
             return list

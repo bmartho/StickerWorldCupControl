@@ -11,5 +11,6 @@ data class Cell(
     val label: String,
     val text: String,
     val numberRepeated: Int,
-    val isSelected: Boolean
+    val isSelected: Boolean,
+    val isStrongColor: Boolean
 )
