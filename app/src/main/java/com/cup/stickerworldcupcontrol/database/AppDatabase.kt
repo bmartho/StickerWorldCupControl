@@ -76,28 +76,25 @@ abstract class AppDatabase : RoomDatabase() {
             var sessionNumber = 1
             var isStrongColor = false
             for (session in listOfSessions) {
-                if (sessionNumber == 1) {
-                    list.add(
-                        Cell(
-                            id = stickerId,
-                            label = "00",
-                            text = "",
-                            isSelected = false,
-                            numberRepeated = 0,
-                            isStrongColor = false
-                        )
-                    )
-                    stickerId++
-                } else {
-                    for (sessionStickerNumber in 1..session.second) {
-                        val numberOfSticker = if (sessionNumber == listOfSessions.size - 1) {
-                            (18 + sessionStickerNumber).toString()
-                        } else if (sessionStickerNumber < 10) {
-                            "0".plus(sessionStickerNumber)
-                        } else {
-                            sessionStickerNumber.toString()
-                        }
+                for (sessionStickerNumber in session.second..session.third) {
+                    val numberOfSticker = if (sessionStickerNumber < 10) {
+                        "0".plus(sessionStickerNumber)
+                    } else {
+                        sessionStickerNumber.toString()
+                    }
 
+                    if (session.first.isEmpty()) {
+                        list.add(
+                            Cell(
+                                id = stickerId,
+                                label = numberOfSticker,
+                                text = "",
+                                isSelected = false,
+                                numberRepeated = 0,
+                                isStrongColor = isStrongColor
+                            )
+                        )
+                    } else {
                         list.add(
                             Cell(
                                 id = stickerId,
@@ -108,12 +105,14 @@ abstract class AppDatabase : RoomDatabase() {
                                 isStrongColor = isStrongColor
                             )
                         )
-                        stickerId++
                     }
+                    stickerId++
                 }
+
                 isStrongColor = !isStrongColor
                 sessionNumber++
             }
+
             return list
         }
     }

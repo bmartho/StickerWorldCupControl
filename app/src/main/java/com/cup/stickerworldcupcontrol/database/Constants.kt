@@ -1,81 +1,78 @@
 package com.cup.stickerworldcupcontrol.database
 
-val listOfSessions: List<Pair<String, Int>> = listOf(
-    Pair("", 1),
-    Pair("FWC", 30),
+val listOfSessions: List<Triple<String, Int, Int>> = listOf(
+    Triple("", 0, 0),
+    Triple("FWC", 1, 30),
 
     // GROUP A
-    Pair("MEX", 20),
-    Pair("RSA", 20),
-    Pair("KOR", 20),
-    Pair("UE4", 20), //FIT IT
+    Triple("MEX", 1, 20),
+    Triple("RSA", 1, 20),
+    Triple("KOR", 1, 20),
+    Triple("UE4", 1, 20), //FIT IT
 
     // GROUP B
-    Pair("CAN", 20),
-    Pair("UE1", 20), //FIT IT
-    Pair("QAT", 20),
-    Pair("SUI", 20),
+    Triple("CAN", 1, 20),
+    Triple("UE1", 1, 20), //FIT IT
+    Triple("QAT", 1, 20),
+    Triple("SUI", 1, 20),
 
     // GROUP C
-    Pair("BRA", 20),
-    Pair("MAR", 20),
-    Pair("HAI", 20),
-    Pair("SCO", 20),
+    Triple("BRA", 1, 20),
+    Triple("MAR", 1, 20),
+    Triple("HAI", 1, 20),
+    Triple("SCO", 1, 20),
 
     // GROUP D
-    Pair("USA", 20),
-    Pair("PAR", 20),
-    Pair("AUS", 20),
-    Pair("UE3", 20), // FIX IT
+    Triple("USA", 1, 20),
+    Triple("PAR", 1, 20),
+    Triple("AUS", 1, 20),
+    Triple("UE3", 1, 20), // FIX IT
 
     // GROUP E
-    Pair("GER", 20),
-    Pair("CUW", 20),
-    Pair("CIV", 20),
-    Pair("ECU", 20),
+    Triple("GER", 1, 20),
+    Triple("CUW", 1, 20),
+    Triple("CIV", 1, 20),
+    Triple("ECU", 1, 20),
 
     // GROUP F
-    Pair("NED", 20),
-    Pair("JPN", 20),
-    Pair("UE2", 20), // FIX IT
-    Pair("TUN", 20),
+    Triple("NED", 1, 20),
+    Triple("JPN", 1, 20),
+    Triple("UE2", 1, 20), // FIX IT
+    Triple("TUN", 1, 20),
 
     // GROUP G
-    Pair("BEL", 20),
-    Pair("EGY", 20),
-    Pair("IRN", 20),
-    Pair("NZL", 20),
+    Triple("BEL", 1, 20),
+    Triple("EGY", 1, 20),
+    Triple("IRN", 1, 20),
+    Triple("NZL", 1, 20),
 
     // GROUP H
-    Pair("ESP", 20),
-    Pair("CPV", 20),
-    Pair("KSA", 20),
-    Pair("URU", 20),
+    Triple("ESP", 1, 20),
+    Triple("CPV", 1, 20),
+    Triple("KSA", 1, 20),
+    Triple("URU", 1, 20),
 
     // GROUP I
-    Pair("FRA", 20),
-    Pair("SEN", 20),
-    Pair("FF2", 20), // FIX IT
-    Pair("NOR", 20),
+    Triple("FRA", 1, 20),
+    Triple("SEN", 1, 20),
+    Triple("FF2", 1, 20), // FIX IT
+    Triple("NOR", 1, 20),
 
     // GROUP J
-    Pair("ARG", 20),
-    Pair("ALG", 20),
-    Pair("AUT", 20),
-    Pair("JOR", 20),
+    Triple("ARG", 1, 20),
+    Triple("ALG", 1, 20),
+    Triple("AUT", 1, 20),
+    Triple("JOR", 1, 20),
 
     // GROUP K
-    Pair("POR", 20),
-    Pair("FF1", 20), // FIX IT
-    Pair("UZB", 20),
-    Pair("COL", 20),
+    Triple("POR", 1, 20),
+    Triple("FF1", 1, 20), // FIX IT
+    Triple("UZB", 1, 20),
+    Triple("COL", 1, 20),
 
     // GROUP L
-    Pair("ENG", 20),
-    Pair("CRO", 20),
-    Pair("GHA", 20),
-    Pair("PAN", 20),
-
-    Pair("FWC", 11),
-    Pair("C", 8)
+    Triple("ENG", 1, 20),
+    Triple("CRO", 1, 20),
+    Triple("GHA", 1, 20),
+    Triple("PAN", 1, 20),
 )
