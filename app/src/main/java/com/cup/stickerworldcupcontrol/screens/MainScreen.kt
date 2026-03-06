@@ -166,7 +166,7 @@ fun MainScreen(
                             text = title.uppercase(),
                             style = MaterialTheme.typography.labelLarge,
                             fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-                            color = if (selected) TabIndicator else Color.LightGray
+                            color = if (selected) TabIndicator else Color.White
                         )
                     }
                 )

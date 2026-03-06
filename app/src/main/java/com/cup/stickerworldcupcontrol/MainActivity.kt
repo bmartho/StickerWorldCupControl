@@ -87,7 +87,7 @@ class MainActivity : ComponentActivity() {
                             shareText += headerMissing
                             shareText += cells
                                 .filter { !it.isSelected }
-                                .joinToString(", ") { it.text }
+                                .joinToString(", ") { "${it.label}${it.text}" }
 
                             if (shareRepeated) {
                                 shareText += "\n\n"
@@ -99,13 +99,14 @@ class MainActivity : ComponentActivity() {
                             shareText += cells
                                 .filter { it.numberRepeated > 0 }
                                 .joinToString(", ") {
+                                    val sticker = "${it.label}${it.text}"
                                     if (!shareNumberRepeated) {
-                                        it.text
+                                        sticker
                                     } else {
                                         if (it.numberRepeated <= 1) {
-                                            it.text
+                                            sticker
                                         } else {
-                                            "${it.text} (${it.numberRepeated})"
+                                            "$sticker (${it.numberRepeated})"
                                         }
                                     }
                                 }
