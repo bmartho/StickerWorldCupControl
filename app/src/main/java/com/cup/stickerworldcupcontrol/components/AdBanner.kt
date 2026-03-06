@@ -1,9 +1,16 @@
 package com.cup.stickerworldcupcontrol.components
 
 import android.content.Context
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -11,16 +18,37 @@ import com.google.android.gms.ads.AdView
 
 @Composable
 fun AdBanner() {
+    var isAdLoaded by remember { mutableStateOf(false) }
+
     AndroidView(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(
+                if (isAdLoaded) {
+                    Modifier.height(IntrinsicSize.Min)
+                } else {
+                    Modifier.height(0.dp)
+                }
+            ),
         factory = { context ->
             AdView(context).apply {
                 val adSize = getAdSize(context)
                 setAdSize(adSize)
-
                 adUnitId = "ca-app-pub-7952920523342900/2562622411"
+
+                adListener = object : com.google.android.gms.ads.AdListener() {
+                    override fun onAdLoaded() {
+                        super.onAdLoaded()
+                        isAdLoaded = true
+                    }
+                }
+
                 loadAd(AdRequest.Builder().build())
             }
+        },
+        update = { adView ->
+            adView.visibility =
+                if (isAdLoaded) android.view.View.VISIBLE else android.view.View.GONE
         }
     )
 }

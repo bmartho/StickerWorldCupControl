@@ -3,9 +3,11 @@ package com.cup.stickerworldcupcontrol.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -134,26 +136,35 @@ fun ButtonCellComponent(
 ) {
     Box(
         modifier = modifier
-            .size(26.dp)
-            .clip(CircleShape)
-            .background(Color(0xFFBBBABA))
-            .clickable {
+            .fillMaxWidth()
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) {
                 onClick()
             },
         contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = text,
-            color = Color.Black,
-            maxLines = 1,
-            fontSize = 12.sp,
-            textAlign = TextAlign.Center,
-            style = LocalTextStyle.current.copy(
-                platformStyle = PlatformTextStyle(
-                    includeFontPadding = false
-                ),
-                lineHeight = 13.sp
+        Box(
+            modifier = Modifier
+                .size(26.dp)
+                .clip(CircleShape)
+                .background(Color(0xFFBBBABA)),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = text,
+                color = Color.Black,
+                maxLines = 1,
+                fontSize = 12.sp,
+                textAlign = TextAlign.Center,
+                style = LocalTextStyle.current.copy(
+                    platformStyle = PlatformTextStyle(
+                        includeFontPadding = false
+                    ),
+                    lineHeight = 13.sp
+                )
             )
-        )
+        }
     }
 }

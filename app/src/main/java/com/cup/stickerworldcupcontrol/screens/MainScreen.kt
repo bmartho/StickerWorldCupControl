@@ -1,6 +1,7 @@
 package com.cup.stickerworldcupcontrol.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
@@ -11,10 +12,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -69,7 +70,7 @@ fun MainScreen(
                     R.string.total_stickers,
                     collectedNumber,
                     cells.size,
-                    "${"%.0f".format(percentage)}%"
+                    "${"%.1f".format(percentage)}%"
                 ),
                 fontSize = 13.sp
             )
@@ -134,21 +135,40 @@ fun MainScreen(
 
         TabRow(
             selectedTabIndex = selectedTabIndex,
+            containerColor = Secondary,
+            contentColor = Color.White,
+            divider = {},
             indicator = { tabPositions ->
-                TabRowDefaults.SecondaryIndicator(
-                    modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                    height = 4.dp,
-                    color = TabIndicator
+                Box(
+                    modifier = Modifier
+                        .tabIndicatorOffset(tabPositions[selectedTabIndex])
+                        .fillMaxSize()
+                        .padding(4.dp)
+                        .background(
+                            color = TabIndicator.copy(alpha = 0.2f),
+                            shape = RoundedCornerShape(16.dp)
+                        )
+                        .border(
+                            width = 1.dp,
+                            color = TabIndicator,
+                            shape = RoundedCornerShape(16.dp)
+                        )
                 )
             }
         ) {
             titles.forEachIndexed { index, title ->
+                val selected = selectedTabIndex == index
                 Tab(
-                    unselectedContentColor = Color.White,
-                    selectedContentColor = TabIndicator,
-                    selected = selectedTabIndex == index,
+                    selected = selected,
                     onClick = { selectedTabIndex = index },
-                    text = { Text(text = title) }
+                    text = {
+                        Text(
+                            text = title.uppercase(),
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+                            color = if (selected) TabIndicator else Color.LightGray
+                        )
+                    }
                 )
             }
         }
