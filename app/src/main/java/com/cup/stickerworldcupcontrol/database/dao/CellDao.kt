@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.cup.stickerworldcupcontrol.database.dao.models.Cell
+import com.cup.stickerworldcupcontrol.database.models.Cell
 import kotlinx.coroutines.flow.Flow
 
 @Dao

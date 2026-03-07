@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.cup.stickerworldcupcontrol.database.dao.CellDao
-import com.cup.stickerworldcupcontrol.database.dao.models.Cell
+import com.cup.stickerworldcupcontrol.database.models.Cell
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.cup.stickerworldcupcontrol.database.dao.CellDao
-import com.cup.stickerworldcupcontrol.database.dao.models.Cell
+import com.cup.stickerworldcupcontrol.database.models.Cell
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

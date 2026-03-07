@@ -1,4 +1,4 @@
-package com.cup.stickerworldcupcontrol.database.dao.models
+package com.cup.stickerworldcupcontrol.database.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
