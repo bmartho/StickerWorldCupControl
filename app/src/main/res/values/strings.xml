@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Sticker Control</string>
+    <string name="app_name">Stickers</string>
+    <string name="app_name_toolbar">Sticker Control</string>
 
     <string name="about_title">About</string>
     <string name="about_creator">Creator: Android Brothers</string>

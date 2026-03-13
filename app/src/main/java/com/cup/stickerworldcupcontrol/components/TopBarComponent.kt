@@ -35,7 +35,7 @@ fun TopBarComponent(
         title =
             {
                 Text(
-                    text = stringResource(id = R.string.app_name),
+                    text = stringResource(id = R.string.app_name_toolbar),
                     style = MaterialTheme.typography.titleLarge
                 )
             },
