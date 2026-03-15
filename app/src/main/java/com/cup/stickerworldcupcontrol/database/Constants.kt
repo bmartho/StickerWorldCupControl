@@ -1,78 +1,376 @@
 package com.cup.stickerworldcupcontrol.database
 
-val listOfSessions: List<Triple<String, Int, Int>> = listOf(
-    Triple("", 0, 0),
-    Triple("FWC", 1, 30),
+val listOfSessions: List<Sticker> = listOf(
+    /* ----------------------- Initial ------------------------- */
 
-    // GROUP A
-    Triple("MEX", 1, 20),
-    Triple("RSA", 1, 20),
-    Triple("KOR", 1, 20),
-    Triple("UE4", 1, 20), //FIT IT
+    Sticker(
+        sessionSimbol = "FWC_START",
+        simbol = "FWC",
+        fromNumber = 1,
+        toNumber = 30
+    ),
 
-    // GROUP B
-    Triple("CAN", 1, 20),
-    Triple("UE1", 1, 20), //FIT IT
-    Triple("QAT", 1, 20),
-    Triple("SUI", 1, 20),
+    /* ----------------------- GROUP A ------------------------- */
+    Sticker(
+        sessionSimbol = "MEX",
+        simbol = "MEX",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP C
-    Triple("BRA", 1, 20),
-    Triple("MAR", 1, 20),
-    Triple("HAI", 1, 20),
-    Triple("SCO", 1, 20),
+    Sticker(
+        sessionSimbol = "RSA",
+        simbol = "RSA",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP D
-    Triple("USA", 1, 20),
-    Triple("PAR", 1, 20),
-    Triple("AUS", 1, 20),
-    Triple("UE3", 1, 20), // FIX IT
+    Sticker(
+        sessionSimbol = "KOR",
+        simbol = "KOR",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP E
-    Triple("GER", 1, 20),
-    Triple("CUW", 1, 20),
-    Triple("CIV", 1, 20),
-    Triple("ECU", 1, 20),
+    Sticker(
+        sessionSimbol = "UE4",
+        simbol = "UE4",
+        fromNumber = 1,
+        toNumber = 20
+    ), //FIX IT
 
-    // GROUP F
-    Triple("NED", 1, 20),
-    Triple("JPN", 1, 20),
-    Triple("UE2", 1, 20), // FIX IT
-    Triple("TUN", 1, 20),
+    /* ----------------------- GROUP B ------------------------- */
+    Sticker(
+        sessionSimbol = "CAN",
+        simbol = "CAN",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP G
-    Triple("BEL", 1, 20),
-    Triple("EGY", 1, 20),
-    Triple("IRN", 1, 20),
-    Triple("NZL", 1, 20),
+    Sticker(
+        sessionSimbol = "UE1",
+        simbol = "UE1",
+        fromNumber = 1,
+        toNumber = 20
+    ), //FIX IT
 
-    // GROUP H
-    Triple("ESP", 1, 20),
-    Triple("CPV", 1, 20),
-    Triple("KSA", 1, 20),
-    Triple("URU", 1, 20),
+    Sticker(
+        sessionSimbol = "QAT",
+        simbol = "QAT",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP I
-    Triple("FRA", 1, 20),
-    Triple("SEN", 1, 20),
-    Triple("FF2", 1, 20), // FIX IT
-    Triple("NOR", 1, 20),
+    Sticker(
+        sessionSimbol = "SUI",
+        simbol = "SUI",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP J
-    Triple("ARG", 1, 20),
-    Triple("ALG", 1, 20),
-    Triple("AUT", 1, 20),
-    Triple("JOR", 1, 20),
+    /* ----------------------- GROUP C ------------------------- */
+    Sticker(
+        sessionSimbol = "BRA",
+        simbol = "BRA",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP K
-    Triple("POR", 1, 20),
-    Triple("FF1", 1, 20), // FIX IT
-    Triple("UZB", 1, 20),
-    Triple("COL", 1, 20),
+    Sticker(
+        sessionSimbol = "MAR",
+        simbol = "MAR",
+        fromNumber = 1,
+        toNumber = 20
+    ),
 
-    // GROUP L
-    Triple("ENG", 1, 20),
-    Triple("CRO", 1, 20),
-    Triple("GHA", 1, 20),
-    Triple("PAN", 1, 20),
+    Sticker(
+        sessionSimbol = "HAI",
+        simbol = "HAI",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "SCO",
+        simbol = "SCO",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP D ------------------------- */
+    Sticker(
+        sessionSimbol = "USA",
+        simbol = "USA",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "PAR",
+        simbol = "PAR",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "AUS",
+        simbol = "AUS",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "UE3",
+        simbol = "UE3",
+        fromNumber = 1,
+        toNumber = 20
+    ), // FIX IT
+
+    /* ----------------------- GROUP E ------------------------- */
+    Sticker(
+        sessionSimbol = "GER",
+        simbol = "GER",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "CUW",
+        simbol = "CUW",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "CIV",
+        simbol = "CIV",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "ECU",
+        simbol = "ECU",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP F ------------------------- */
+    Sticker(
+        sessionSimbol = "NED",
+        simbol = "NED",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "JPN",
+        simbol = "JPN",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "UE2",
+        simbol = "UE2",
+        fromNumber = 1,
+        toNumber = 20
+    ), // FIX IT
+
+    Sticker(
+        sessionSimbol = "TUN",
+        simbol = "TUN",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP G ------------------------- */
+    Sticker(
+        sessionSimbol = "BEL",
+        simbol = "BEL",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "EGY",
+        simbol = "EGY",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "IRN",
+        simbol = "IRN",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "NZL",
+        simbol = "NZL",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP H ------------------------- */
+    Sticker(
+        sessionSimbol = "ESP",
+        simbol = "ESP",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "CPV",
+        simbol = "CPV",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "KSA",
+        simbol = "KSA",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "URU",
+        simbol = "URU",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP I ------------------------- */
+    Sticker(
+        sessionSimbol = "FRA",
+        simbol = "FRA",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "SEN",
+        simbol = "SEN",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "FF2",
+        simbol = "FF2",
+        fromNumber = 1,
+        toNumber = 20
+    ), // FIX IT
+
+    Sticker(
+        sessionSimbol = "NOR",
+        simbol = "NOR",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP J ------------------------- */
+    Sticker(
+        sessionSimbol = "ARG",
+        simbol = "ARG",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "ALG",
+        simbol = "ALG",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "AUT",
+        simbol = "AUT",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "JOR",
+        simbol = "JOR",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP K ------------------------- */
+    Sticker(
+        sessionSimbol = "POR",
+        simbol = "POR",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "FF1",
+        simbol = "FF1",
+        fromNumber = 1,
+        toNumber = 20
+    ), // FIX IT
+
+    Sticker(
+        sessionSimbol = "UZB",
+        simbol = "UZB",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "COL",
+        simbol = "COL",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- GROUP L ------------------------- */
+    Sticker(
+        sessionSimbol = "ENG",
+        simbol = "ENG",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "CRO",
+        simbol = "CRO",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "GHA",
+        simbol = "GHA",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    Sticker(
+        sessionSimbol = "PAN",
+        simbol = "PAN",
+        fromNumber = 1,
+        toNumber = 20
+    ),
+
+    /* ----------------------- End ------------------------- */
+
+    Sticker(
+        sessionSimbol = "FWC_END",
+        simbol = "FWC",
+        fromNumber = 31,
+        toNumber = 50
+    )
+)
+
+data class Sticker(
+    val sessionSimbol: String,
+    val simbol: String,
+    val fromNumber: Int,
+    val toNumber: Int
 )

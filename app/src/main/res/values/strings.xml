@@ -32,4 +32,51 @@
     <string name="btn_ok" translatable="false">OK</string>
     <string name="btn_clear_all">Clear All</string>
     <string name="btn_cancel">Cancel</string>
+
+    <string name="section_fwc">Initial Section</string>
+    <string name="section_fwc_end">End Section</string>
+    <string name="team_playoff">Play-off</string>
+
+    <string name="team_mexico">Mexico</string>
+    <string name="team_south_africa">South Africa</string>
+    <string name="team_south_korea">South Korea</string>
+    <string name="team_canada">Canada</string>
+    <string name="team_qatar">Qatar</string>
+    <string name="team_switzerland">Switzerland</string>
+    <string name="team_brazil">Brazil</string>
+    <string name="team_morocco">Morocco</string>
+    <string name="team_haiti">Haiti</string>
+    <string name="team_scotland">Scotland</string>
+    <string name="team_usa">USA</string>
+    <string name="team_paraguay">Paraguay</string>
+    <string name="team_australia">Australia</string>
+    <string name="team_germany">Germany</string>
+    <string name="team_curacao">Curaçao</string>
+    <string name="team_ivory_coast">Ivory Coast</string>
+    <string name="team_ecuador">Ecuador</string>
+    <string name="team_netherlands">Netherlands</string>
+    <string name="team_japan">Japan</string>
+    <string name="team_tunisia">Tunisia</string>
+    <string name="team_belgium">Belgium</string>
+    <string name="team_egypt">Egypt</string>
+    <string name="team_iran">Iran</string>
+    <string name="team_new_zealand">New Zealand</string>
+    <string name="team_spain">Spain</string>
+    <string name="team_cape_verde">Cape Verde</string>
+    <string name="team_saudi_arabia">Saudi Arabia</string>
+    <string name="team_uruguay">Uruguay</string>
+    <string name="team_france">France</string>
+    <string name="team_senegal">Senegal</string>
+    <string name="team_norway">Norway</string>
+    <string name="team_argentina">Argentina</string>
+    <string name="team_algeria">Algeria</string>
+    <string name="team_austria">Austria</string>
+    <string name="team_jordan">Jordan</string>
+    <string name="team_portugal">Portugal</string>
+    <string name="team_uzbekistan">Uzbekistan</string>
+    <string name="team_colombia">Colombia</string>
+    <string name="team_england">England</string>
+    <string name="team_croatia">Croatia</string>
+    <string name="team_ghana">Ghana</string>
+    <string name="team_panama">Panama</string>
 </resources>

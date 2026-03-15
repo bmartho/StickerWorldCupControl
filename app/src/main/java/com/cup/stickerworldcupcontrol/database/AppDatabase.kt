@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Cell::class], version = 1, exportSchema = false)
+@Database(entities = [Cell::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun cellDao(): CellDao
 
@@ -73,17 +73,15 @@ abstract class AppDatabase : RoomDatabase() {
         private fun buildCells(): List<Cell> {
             val list = mutableListOf<Cell>()
             var stickerId = 1
-            var sessionNumber = 1
-            var isStrongColor = false
             for (session in listOfSessions) {
-                for (sessionStickerNumber in session.second..session.third) {
+                for (sessionStickerNumber in session.fromNumber..session.toNumber) {
                     val numberOfSticker = if (sessionStickerNumber < 10) {
                         "0".plus(sessionStickerNumber)
                     } else {
                         sessionStickerNumber.toString()
                     }
 
-                    if (session.first.isEmpty()) {
+                    if (session.simbol.isEmpty()) {
                         list.add(
                             Cell(
                                 id = stickerId,
@@ -91,26 +89,23 @@ abstract class AppDatabase : RoomDatabase() {
                                 text = "",
                                 isSelected = false,
                                 numberRepeated = 0,
-                                isStrongColor = isStrongColor
+                                sessionSimbol = session.sessionSimbol
                             )
                         )
                     } else {
                         list.add(
                             Cell(
                                 id = stickerId,
-                                label = session.first,
+                                label = session.simbol,
                                 text = numberOfSticker,
                                 isSelected = false,
                                 numberRepeated = 0,
-                                isStrongColor = isStrongColor
+                                sessionSimbol = session.sessionSimbol
                             )
                         )
                     }
                     stickerId++
                 }
-
-                isStrongColor = !isStrongColor
-                sessionNumber++
             }
 
             return list

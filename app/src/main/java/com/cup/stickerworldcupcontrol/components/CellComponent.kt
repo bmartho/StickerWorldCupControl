@@ -29,10 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cup.stickerworldcupcontrol.database.models.Cell
 import com.cup.stickerworldcupcontrol.ui.theme.RepeatedSticker
-import com.cup.stickerworldcupcontrol.ui.theme.RepeatedStickerStrong
 import com.cup.stickerworldcupcontrol.ui.theme.SelectedSticker
-import com.cup.stickerworldcupcontrol.ui.theme.SelectedStickerStrong
-import com.cup.stickerworldcupcontrol.ui.theme.WhiteStrong
 
 @Composable
 fun CellComponent(
@@ -46,9 +43,8 @@ fun CellComponent(
         val isStickerActive = if (isRepeatedLayout) cell.numberRepeated > 0 else cell.isSelected
 
         when {
-            isStickerActive && isRepeatedLayout -> if (cell.isStrongColor) RepeatedStickerStrong else RepeatedSticker
-            isStickerActive && !isRepeatedLayout -> if (cell.isStrongColor) SelectedStickerStrong else SelectedSticker
-            cell.isStrongColor -> WhiteStrong
+            isStickerActive && isRepeatedLayout -> RepeatedSticker
+            isStickerActive && !isRepeatedLayout -> SelectedSticker
             else -> Color.White
         }
     }

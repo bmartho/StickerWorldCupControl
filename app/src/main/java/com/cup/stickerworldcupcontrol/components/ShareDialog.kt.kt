@@ -34,7 +34,7 @@ fun ShareDialog(
     ) -> Unit,
     onDismiss: () -> Unit
 ) {
-    var shareMissing by remember { mutableStateOf(true) }
+    var shareMissing by remember { mutableStateOf(false) }
     var shareRepeated by remember { mutableStateOf(true) }
     var shareNumberRepeated by remember { mutableStateOf(false) }
 

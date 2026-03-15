@@ -6,30 +6,77 @@
     <string name="about_creator">Creador: Android Brothers</string>
     <string name="about_version">Versión: %1$s</string>
 
-    <string name="reset_dialog_title">¿Limpiar Álbum?</string>
-    <string name="reset_dialog_text">Esto reiniciará tu álbum y tendrás que empezar de cero. Esta acción no se puede deshacer.</string>
+    <string name="reset_dialog_title">¿Vaciar Álbum?</string>
+    <string name="reset_dialog_text">Esto borrará todas tus estampas marcadas. Esta acción no se puede deshacer.</string>
 
-    <string name="share_dialog_title">¿Qué información te gustaría compartir?</string>
+    <string name="share_dialog_title">¿Qué deseas compartir?</string>
     <string name="share_option_missing">Estampas faltantes</string>
     <string name="share_option_repeated">Estampas repetidas</string>
     <string name="share_option_repeated_count">Incluir cantidad de repetidas</string>
 
     <string name="content_desc_share">Compartir</string>
     <string name="content_desc_options">Opciones</string>
-    <string name="menu_clear_album">Limpiar Álbum</string>
+    <string name="menu_clear_album">Vaciar Álbum</string>
     <string name="menu_about">Acerca de</string>
 
     <string name="tab_collected">Obtenidas</string>
     <string name="tab_repeated">Repetidas</string>
-    <string name="loading_stickers">Cargando Estampitas…</string>
+    <string name="loading_stickers">Cargando estampas…</string>
     <string name="total_stickers">Total obtenidas: %1$s/%2$s (%3$s)</string>
 
     <string name="share_header_missing">Estampas faltantes:\n\n</string>
     <string name="share_header_repeated">Estampas repetidas:\n\n</string>
-    <string name="share_chooser_title">Compartir vía</string>
+    <string name="share_chooser_title">Compartir por</string>
 
     <string name="btn_share">Compartir</string>
     <string name="btn_ok" translatable="false">OK</string>
-    <string name="btn_clear_all">Limpiar Todo</string>
+    <string name="btn_clear_all">Borrar Todo</string>
     <string name="btn_cancel">Cancelar</string>
+
+    <string name="section_fwc">Sección Inicial</string>
+    <string name="section_fwc_end">Sección Final</string>
+    <string name="team_playoff">Repechaje</string>
+
+    <string name="team_mexico">México</string>
+    <string name="team_south_africa">Sudáfrica</string>
+    <string name="team_south_korea">Corea del Sur</string>
+    <string name="team_canada">Canadá</string>
+    <string name="team_qatar">Catar</string>
+    <string name="team_switzerland">Suiza</string>
+    <string name="team_brazil">Brasil</string>
+    <string name="team_morocco">Marruecos</string>
+    <string name="team_haiti">Haití</string>
+    <string name="team_scotland">Escocia</string>
+    <string name="team_usa">Estados Unidos</string>
+    <string name="team_paraguay">Paraguay</string>
+    <string name="team_australia">Australia</string>
+    <string name="team_germany">Alemania</string>
+    <string name="team_curacao">Curazao</string>
+    <string name="team_ivory_coast">Costa de Marfil</string>
+    <string name="team_ecuador">Ecuador</string>
+    <string name="team_netherlands">Países Bajos</string>
+    <string name="team_japan">Japón</string>
+    <string name="team_tunisia">Túnez</string>
+    <string name="team_belgium">Bélgica</string>
+    <string name="team_egypt">Egipto</string>
+    <string name="team_iran">Irán</string>
+    <string name="team_new_zealand">Nueva Zelanda</string>
+    <string name="team_spain">España</string>
+    <string name="team_cape_verde">Cabo Verde</string>
+    <string name="team_saudi_arabia">Arabia Saudita</string>
+    <string name="team_uruguay">Uruguay</string>
+    <string name="team_france">Francia</string>
+    <string name="team_senegal">Senegal</string>
+    <string name="team_norway">Noruega</string>
+    <string name="team_argentina">Argentina</string>
+    <string name="team_algeria">Argelia</string>
+    <string name="team_austria">Austria</string>
+    <string name="team_jordan">Jordania</string>
+    <string name="team_portugal">Portugal</string>
+    <string name="team_uzbekistan">Uzbekistán</string>
+    <string name="team_colombia">Colombia</string>
+    <string name="team_england">Inglaterra</string>
+    <string name="team_croatia">Croacia</string>
+    <string name="team_ghana">Ghana</string>
+    <string name="team_panama">Panamá</string>
 </resources>

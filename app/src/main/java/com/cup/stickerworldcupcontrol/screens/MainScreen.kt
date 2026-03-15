@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -30,11 +31,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cup.stickerworldcupcontrol.R
 import com.cup.stickerworldcupcontrol.components.AdBanner
 import com.cup.stickerworldcupcontrol.components.CellComponent
+import com.cup.stickerworldcupcontrol.extensions.toStringId
 import com.cup.stickerworldcupcontrol.ui.theme.Secondary
 import com.cup.stickerworldcupcontrol.ui.theme.TabIndicator
 
@@ -50,6 +53,9 @@ fun MainScreen(
         (collectedNumber.toFloat() / cells.size.toFloat()) * 100
     } else {
         0f
+    }
+    val groupedCells = remember(cells) {
+        cells.groupBy { it.sessionSimbol }
     }
 
     val titles = listOf(
@@ -106,28 +112,48 @@ fun MainScreen(
                     verticalArrangement = spacedBy(4.dp),
                     horizontalArrangement = spacedBy(4.dp)
                 ) {
-                    items(
-                        count = cells.size,
-                        key = { index -> cells[index].id },
-                        contentType = { "sticker" }) { index ->
-                        val cell = cells[index]
-                        val isRepeatedTab by remember {
-                            derivedStateOf { selectedTabIndex == 1 }
+                    groupedCells.forEach { (sessionSimbol, cells) ->
+                        item(
+                            key = "header_$sessionSimbol",
+                            span = { GridItemSpan(maxLineSpan) }
+                        ) {
+                            val paddingTop = if (sessionSimbol != "FWC_START") 34.dp else 12.dp
+                            Text(
+                                text = stringResource(sessionSimbol.toStringId()),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = paddingTop, bottom = 12.dp),
+                                textAlign = TextAlign.Center,
+                                color = Color.Black,
+                                maxLines = 1,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.W900,
+                            )
                         }
 
-                        val onCellClick = remember(cell) { { appViewModel.onCellClick(cell) } }
-                        val onIncrease =
-                            remember(cell) { { appViewModel.onIncreaseRepeatedClick(cell) } }
-                        val onDecrease =
-                            remember(cell) { { appViewModel.onDecreaseRepeatedClick(cell) } }
+                        items(
+                            count = cells.size,
+                            key = { index -> cells[index].id },
+                            contentType = { "sticker" }) { index ->
+                            val cell = cells[index]
+                            val isRepeatedTab by remember {
+                                derivedStateOf { selectedTabIndex == 1 }
+                            }
 
-                        CellComponent(
-                            cell = cells[index],
-                            isRepeatedLayout = isRepeatedTab,
-                            onClick = onCellClick,
-                            onIncreaseRepeated = onIncrease,
-                            onDecreaseRepeated = onDecrease
-                        )
+                            val onCellClick = remember(cell) { { appViewModel.onCellClick(cell) } }
+                            val onIncrease =
+                                remember(cell) { { appViewModel.onIncreaseRepeatedClick(cell) } }
+                            val onDecrease =
+                                remember(cell) { { appViewModel.onDecreaseRepeatedClick(cell) } }
+
+                            CellComponent(
+                                cell = cells[index],
+                                isRepeatedLayout = isRepeatedTab,
+                                onClick = onCellClick,
+                                onIncreaseRepeated = onIncrease,
+                                onDecreaseRepeated = onDecrease
+                            )
+                        }
                     }
                 }
             }
