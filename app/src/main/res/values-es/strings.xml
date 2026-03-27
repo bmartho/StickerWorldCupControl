@@ -14,6 +14,8 @@
     <string name="share_option_repeated">Estampas repetidas</string>
     <string name="share_option_repeated_count">Incluir cantidad de repetidas</string>
 
+    <string name="filter_dialog_title">Ir a la sección</string>
+
     <string name="content_desc_options">Opciones</string>
     <string name="content_desc_go_to">Ir a</string>
     <string name="menu_share">Compartir</string>

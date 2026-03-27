@@ -14,6 +14,8 @@
     <string name="share_option_repeated">Figurinhas repetidas</string>
     <string name="share_option_repeated_count">Incluir quantidade de repetidas</string>
 
+    <string name="filter_dialog_title">Ir para seção</string>
+
     <string name="content_desc_options">Opções</string>
     <string name="content_desc_go_to">Ir para</string>
     <string name="menu_share">Compartilhar</string>
