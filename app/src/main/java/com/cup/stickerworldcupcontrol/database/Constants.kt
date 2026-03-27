@@ -1,10 +1,10 @@
 package com.cup.stickerworldcupcontrol.database
 
-val listOfSessions: List<Sticker> = listOf(
+val listOfSections: List<Sticker> = listOf(
     /* ----------------------- Initial ------------------------- */
 
     Sticker(
-        sessionSimbol = "FWC_START",
+        sectionSimbol = "FWC_START",
         simbol = "FWC",
         fromNumber = 1,
         toNumber = 30
@@ -12,28 +12,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP A ------------------------- */
     Sticker(
-        sessionSimbol = "MEX",
+        sectionSimbol = "MEX",
         simbol = "MEX",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "RSA",
+        sectionSimbol = "RSA",
         simbol = "RSA",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "KOR",
+        sectionSimbol = "KOR",
         simbol = "KOR",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "UE4",
+        sectionSimbol = "UE4",
         simbol = "UE4",
         fromNumber = 1,
         toNumber = 20
@@ -41,28 +41,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP B ------------------------- */
     Sticker(
-        sessionSimbol = "CAN",
+        sectionSimbol = "CAN",
         simbol = "CAN",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "UE1",
+        sectionSimbol = "UE1",
         simbol = "UE1",
         fromNumber = 1,
         toNumber = 20
     ), //FIX IT
 
     Sticker(
-        sessionSimbol = "QAT",
+        sectionSimbol = "QAT",
         simbol = "QAT",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "SUI",
+        sectionSimbol = "SUI",
         simbol = "SUI",
         fromNumber = 1,
         toNumber = 20
@@ -70,28 +70,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP C ------------------------- */
     Sticker(
-        sessionSimbol = "BRA",
+        sectionSimbol = "BRA",
         simbol = "BRA",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "MAR",
+        sectionSimbol = "MAR",
         simbol = "MAR",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "HAI",
+        sectionSimbol = "HAI",
         simbol = "HAI",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "SCO",
+        sectionSimbol = "SCO",
         simbol = "SCO",
         fromNumber = 1,
         toNumber = 20
@@ -99,28 +99,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP D ------------------------- */
     Sticker(
-        sessionSimbol = "USA",
+        sectionSimbol = "USA",
         simbol = "USA",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "PAR",
+        sectionSimbol = "PAR",
         simbol = "PAR",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "AUS",
+        sectionSimbol = "AUS",
         simbol = "AUS",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "UE3",
+        sectionSimbol = "UE3",
         simbol = "UE3",
         fromNumber = 1,
         toNumber = 20
@@ -128,28 +128,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP E ------------------------- */
     Sticker(
-        sessionSimbol = "GER",
+        sectionSimbol = "GER",
         simbol = "GER",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "CUW",
+        sectionSimbol = "CUW",
         simbol = "CUW",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "CIV",
+        sectionSimbol = "CIV",
         simbol = "CIV",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "ECU",
+        sectionSimbol = "ECU",
         simbol = "ECU",
         fromNumber = 1,
         toNumber = 20
@@ -157,28 +157,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP F ------------------------- */
     Sticker(
-        sessionSimbol = "NED",
+        sectionSimbol = "NED",
         simbol = "NED",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "JPN",
+        sectionSimbol = "JPN",
         simbol = "JPN",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "UE2",
+        sectionSimbol = "UE2",
         simbol = "UE2",
         fromNumber = 1,
         toNumber = 20
     ), // FIX IT
 
     Sticker(
-        sessionSimbol = "TUN",
+        sectionSimbol = "TUN",
         simbol = "TUN",
         fromNumber = 1,
         toNumber = 20
@@ -186,28 +186,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP G ------------------------- */
     Sticker(
-        sessionSimbol = "BEL",
+        sectionSimbol = "BEL",
         simbol = "BEL",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "EGY",
+        sectionSimbol = "EGY",
         simbol = "EGY",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "IRN",
+        sectionSimbol = "IRN",
         simbol = "IRN",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "NZL",
+        sectionSimbol = "NZL",
         simbol = "NZL",
         fromNumber = 1,
         toNumber = 20
@@ -215,28 +215,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP H ------------------------- */
     Sticker(
-        sessionSimbol = "ESP",
+        sectionSimbol = "ESP",
         simbol = "ESP",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "CPV",
+        sectionSimbol = "CPV",
         simbol = "CPV",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "KSA",
+        sectionSimbol = "KSA",
         simbol = "KSA",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "URU",
+        sectionSimbol = "URU",
         simbol = "URU",
         fromNumber = 1,
         toNumber = 20
@@ -244,28 +244,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP I ------------------------- */
     Sticker(
-        sessionSimbol = "FRA",
+        sectionSimbol = "FRA",
         simbol = "FRA",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "SEN",
+        sectionSimbol = "SEN",
         simbol = "SEN",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "FF2",
+        sectionSimbol = "FF2",
         simbol = "FF2",
         fromNumber = 1,
         toNumber = 20
     ), // FIX IT
 
     Sticker(
-        sessionSimbol = "NOR",
+        sectionSimbol = "NOR",
         simbol = "NOR",
         fromNumber = 1,
         toNumber = 20
@@ -273,28 +273,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP J ------------------------- */
     Sticker(
-        sessionSimbol = "ARG",
+        sectionSimbol = "ARG",
         simbol = "ARG",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "ALG",
+        sectionSimbol = "ALG",
         simbol = "ALG",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "AUT",
+        sectionSimbol = "AUT",
         simbol = "AUT",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "JOR",
+        sectionSimbol = "JOR",
         simbol = "JOR",
         fromNumber = 1,
         toNumber = 20
@@ -302,28 +302,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP K ------------------------- */
     Sticker(
-        sessionSimbol = "POR",
+        sectionSimbol = "POR",
         simbol = "POR",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "FF1",
+        sectionSimbol = "FF1",
         simbol = "FF1",
         fromNumber = 1,
         toNumber = 20
     ), // FIX IT
 
     Sticker(
-        sessionSimbol = "UZB",
+        sectionSimbol = "UZB",
         simbol = "UZB",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "COL",
+        sectionSimbol = "COL",
         simbol = "COL",
         fromNumber = 1,
         toNumber = 20
@@ -331,28 +331,28 @@ val listOfSessions: List<Sticker> = listOf(
 
     /* ----------------------- GROUP L ------------------------- */
     Sticker(
-        sessionSimbol = "ENG",
+        sectionSimbol = "ENG",
         simbol = "ENG",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "CRO",
+        sectionSimbol = "CRO",
         simbol = "CRO",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "GHA",
+        sectionSimbol = "GHA",
         simbol = "GHA",
         fromNumber = 1,
         toNumber = 20
     ),
 
     Sticker(
-        sessionSimbol = "PAN",
+        sectionSimbol = "PAN",
         simbol = "PAN",
         fromNumber = 1,
         toNumber = 20
@@ -361,7 +361,7 @@ val listOfSessions: List<Sticker> = listOf(
     /* ----------------------- End ------------------------- */
 
     Sticker(
-        sessionSimbol = "FWC_END",
+        sectionSimbol = "FWC_END",
         simbol = "FWC",
         fromNumber = 31,
         toNumber = 50
@@ -369,7 +369,7 @@ val listOfSessions: List<Sticker> = listOf(
 )
 
 data class Sticker(
-    val sessionSimbol: String,
+    val sectionSimbol: String,
     val simbol: String,
     val fromNumber: Int,
     val toNumber: Int

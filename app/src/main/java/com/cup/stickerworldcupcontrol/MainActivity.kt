@@ -53,6 +53,7 @@ class MainActivity : ComponentActivity() {
             var showResetDialog by remember { mutableStateOf(false) }
             var shareDialog by remember { mutableStateOf(false) }
             var aboutDialog by remember { mutableStateOf(false) }
+            var goToDialog by remember { mutableStateOf(false) }
             if (aboutDialog) {
                 AboutDialog(
                     appVersion = context.packageManager.getPackageInfo(
@@ -138,14 +139,20 @@ class MainActivity : ComponentActivity() {
                             },
                             aboutDialog = {
                                 aboutDialog = true
+                            },
+                            onGoToDialog = {
+                                goToDialog = true
                             }
                         )
                     }
                 ) { innerPadding ->
                     MainScreen(
                         paddingValues = innerPadding,
-                        appViewModel = viewModel
-                    )
+                        appViewModel = viewModel,
+                        goToDialog = goToDialog
+                    ) {
+                        goToDialog = false
+                    }
                 }
             }
         }

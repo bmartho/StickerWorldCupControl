@@ -14,8 +14,9 @@
     <string name="share_option_repeated">Repeated stickers</string>
     <string name="share_option_repeated_count">Include number of repeats</string>
 
-    <string name="content_desc_share">Share</string>
     <string name="content_desc_options">Options</string>
+    <string name="content_desc_go_to">Go to</string>
+    <string name="menu_share">Share</string>
     <string name="menu_clear_album">Clear Album</string>
     <string name="menu_about">About</string>
 

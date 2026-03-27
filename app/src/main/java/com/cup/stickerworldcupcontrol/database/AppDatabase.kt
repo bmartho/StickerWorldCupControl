@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Cell::class], version = 2, exportSchema = false)
+@Database(entities = [Cell::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun cellDao(): CellDao
 
@@ -73,15 +73,15 @@ abstract class AppDatabase : RoomDatabase() {
         private fun buildCells(): List<Cell> {
             val list = mutableListOf<Cell>()
             var stickerId = 1
-            for (session in listOfSessions) {
-                for (sessionStickerNumber in session.fromNumber..session.toNumber) {
-                    val numberOfSticker = if (sessionStickerNumber < 10) {
-                        "0".plus(sessionStickerNumber)
+            for (section in listOfSections) {
+                for (sectionStickerNumber in section.fromNumber..section.toNumber) {
+                    val numberOfSticker = if (sectionStickerNumber < 10) {
+                        "0".plus(sectionStickerNumber)
                     } else {
-                        sessionStickerNumber.toString()
+                        sectionStickerNumber.toString()
                     }
 
-                    if (session.simbol.isEmpty()) {
+                    if (section.simbol.isEmpty()) {
                         list.add(
                             Cell(
                                 id = stickerId,
@@ -89,18 +89,18 @@ abstract class AppDatabase : RoomDatabase() {
                                 text = "",
                                 isSelected = false,
                                 numberRepeated = 0,
-                                sessionSimbol = session.sessionSimbol
+                                sectionSimbol = section.sectionSimbol
                             )
                         )
                     } else {
                         list.add(
                             Cell(
                                 id = stickerId,
-                                label = session.simbol,
+                                label = section.simbol,
                                 text = numberOfSticker,
                                 isSelected = false,
                                 numberRepeated = 0,
-                                sessionSimbol = session.sessionSimbol
+                                sectionSimbol = section.sectionSimbol
                             )
                         )
                     }

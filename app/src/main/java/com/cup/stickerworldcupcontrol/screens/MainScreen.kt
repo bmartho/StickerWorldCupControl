@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
@@ -20,10 +21,12 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -37,6 +40,8 @@ import androidx.compose.ui.unit.sp
 import com.cup.stickerworldcupcontrol.R
 import com.cup.stickerworldcupcontrol.components.AdBanner
 import com.cup.stickerworldcupcontrol.components.CellComponent
+import com.cup.stickerworldcupcontrol.components.GoToDialog
+import com.cup.stickerworldcupcontrol.database.models.Cell
 import com.cup.stickerworldcupcontrol.extensions.toStringId
 import com.cup.stickerworldcupcontrol.ui.theme.Secondary
 import com.cup.stickerworldcupcontrol.ui.theme.TabIndicator
@@ -44,8 +49,12 @@ import com.cup.stickerworldcupcontrol.ui.theme.TabIndicator
 @Composable
 fun MainScreen(
     paddingValues: PaddingValues,
-    appViewModel: AppViewModel
+    appViewModel: AppViewModel,
+    goToDialog: Boolean,
+    goToDialogDismiss: () -> Unit
 ) {
+    var currentSection by remember { mutableStateOf("") }
+    val gridState = rememberLazyGridState()
     val cells by appViewModel.listCells.collectAsState(initial = emptyList())
     var selectedTabIndex by remember { mutableIntStateOf(0) }
     val collectedNumber = cells.count { it.isSelected }
@@ -55,13 +64,35 @@ fun MainScreen(
         0f
     }
     val groupedCells = remember(cells) {
-        cells.groupBy { it.sessionSimbol }
+        cells.groupBy { it.sectionSimbol }
     }
 
     val titles = listOf(
         stringResource(id = R.string.tab_collected),
         stringResource(id = R.string.tab_repeated)
     )
+
+    if (goToDialog) {
+        GoToDialog(
+            sectionSimbolList = cells.map { it.sectionSimbol }.distinct(),
+            onDismiss = {
+                goToDialogDismiss()
+            },
+            onSectionClick = { section ->
+                currentSection = section
+                goToDialogDismiss()
+            }
+        )
+    }
+
+    LaunchedEffect(currentSection) {
+        if (currentSection.isNotEmpty()) {
+            val index = findSectionIndex(currentSection, groupedCells)
+            if (index != -1) {
+                gridState.scrollToItem(index)
+            }
+        }
+    }
 
     Column(modifier = Modifier.padding(paddingValues)) {
         Box(
@@ -107,19 +138,20 @@ fun MainScreen(
             } else {
                 LazyVerticalGrid(
                     modifier = Modifier.fillMaxSize(),
+                    state = gridState,
                     columns = GridCells.Fixed(5),
                     contentPadding = PaddingValues(4.dp),
                     verticalArrangement = spacedBy(4.dp),
                     horizontalArrangement = spacedBy(4.dp)
                 ) {
-                    groupedCells.forEach { (sessionSimbol, cells) ->
+                    groupedCells.forEach { (sectionSimbol, cells) ->
                         item(
-                            key = "header_$sessionSimbol",
+                            key = "header_$sectionSimbol",
                             span = { GridItemSpan(maxLineSpan) }
                         ) {
-                            val paddingTop = if (sessionSimbol != "FWC_START") 34.dp else 12.dp
+                            val paddingTop = if (sectionSimbol != "FWC_START") 34.dp else 12.dp
                             Text(
-                                text = stringResource(sessionSimbol.toStringId()),
+                                text = stringResource(sectionSimbol.toStringId()),
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(top = paddingTop, bottom = 12.dp),
@@ -201,4 +233,16 @@ fun MainScreen(
 
         AdBanner()
     }
+}
+
+private fun findSectionIndex(targetSimbol: String, groupedCells: Map<String, List<Cell>>): Int {
+    var cumulativeIndex = 0
+    for ((simbol, items) in groupedCells) {
+        if (simbol == targetSimbol) {
+            return cumulativeIndex
+        }
+
+        cumulativeIndex += 1 + items.size
+    }
+    return -1
 }

@@ -12,5 +12,5 @@ data class Cell(
     val text: String,
     val numberRepeated: Int,
     val isSelected: Boolean,
-    val sessionSimbol: String
+    val sectionSimbol: String
 )

@@ -1,8 +1,8 @@
 package com.cup.stickerworldcupcontrol.components
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -27,7 +27,8 @@ import com.cup.stickerworldcupcontrol.ui.theme.Secondary
 fun TopBarComponent(
     showResetDialog: () -> Unit,
     shareDialog: () -> Unit,
-    aboutDialog: () -> Unit
+    aboutDialog: () -> Unit,
+    onGoToDialog: () -> Unit
 ) {
     var showMenu by remember { mutableStateOf(false) }
 
@@ -41,12 +42,10 @@ fun TopBarComponent(
             },
         actions =
             {
-                IconButton(onClick = {
-                    shareDialog()
-                }) {
+                IconButton(onClick = onGoToDialog) {
                     Icon(
-                        imageVector = Icons.Default.Share,
-                        contentDescription = stringResource(id = R.string.content_desc_share)
+                        Icons.AutoMirrored.Filled.List,
+                        contentDescription = stringResource(id = R.string.content_desc_go_to)
                     )
                 }
 
@@ -61,6 +60,14 @@ fun TopBarComponent(
                     expanded = showMenu,
                     onDismissRequest = { showMenu = false }
                 ) {
+                    DropdownMenuItem(
+                        text = { Text(text = stringResource(id = R.string.menu_share)) },
+                        onClick = {
+                            shareDialog()
+                            showMenu = false
+                        }
+                    )
+
                     DropdownMenuItem(
                         text = { Text(text = stringResource(id = R.string.menu_clear_album)) },
                         onClick = {
