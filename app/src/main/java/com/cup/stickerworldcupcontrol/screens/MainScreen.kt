@@ -74,7 +74,7 @@ fun MainScreen(
 
     if (goToDialog) {
         GoToDialog(
-            sectionSimbolList = cells.map { it.sectionSimbol }.distinct(),
+            cells = cells,
             onDismiss = {
                 goToDialogDismiss()
             },

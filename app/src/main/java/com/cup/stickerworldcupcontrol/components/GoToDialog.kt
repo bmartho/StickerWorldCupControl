@@ -1,5 +1,6 @@
 package com.cup.stickerworldcupcontrol.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,32 +35,44 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cup.stickerworldcupcontrol.R
+import com.cup.stickerworldcupcontrol.database.models.Cell
 import com.cup.stickerworldcupcontrol.extensions.toStringId
 import com.cup.stickerworldcupcontrol.ui.theme.ButtonColor
+import com.cup.stickerworldcupcontrol.ui.theme.SectionCompleted
 import java.text.Collator
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GoToDialog(
-    sectionSimbolList: List<String>,
+    cells: List<Cell>,
     onDismiss: () -> Unit,
     onSectionClick: (String) -> Unit
 ) {
     var isAlphabeticalOrder by remember { mutableStateOf(true) }
-
-    val sectionsWithNames = sectionSimbolList.map {
-        it to stringResource(id = it.toStringId())
+    val popupSectionList = remember(cells) {
+        cells.groupBy { it.sectionSimbol }
+            .map { (simbol, group) ->
+                PopupSection(
+                    sectionSimbol = simbol,
+                    totalNumber = group.size,
+                    totalSelected = group.count { it.isSelected }
+                )
+            }
     }
 
-    val finalSectionList = remember(isAlphabeticalOrder, sectionsWithNames) {
+    val sectionsWithNamesAndQuantity = popupSectionList.map {
+        it to "${stringResource(id = it.sectionSimbol.toStringId())} (${it.totalSelected}/${it.totalNumber})"
+    }
+
+    val finalSectionList = remember(isAlphabeticalOrder, sectionsWithNamesAndQuantity) {
         if (isAlphabeticalOrder) {
             val collator = Collator.getInstance(Locale.getDefault()).apply {
                 strength = Collator.PRIMARY
             }
-            sectionsWithNames.sortedWith(compareBy(collator) { it.second })
+            sectionsWithNamesAndQuantity.sortedWith(compareBy(collator) { it.second })
         } else {
-            sectionsWithNames
+            sectionsWithNamesAndQuantity
         }
     }
 
@@ -105,14 +118,19 @@ fun GoToDialog(
         text = {
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 itemsIndexed(finalSectionList) { index, pair ->
-                    val sectionSimbol = pair.first
+                    val popupSection = pair.first
                     val sectionName = pair.second
-
-                    Column {
+                    val backgroundColor =
+                        if (popupSection.totalNumber == popupSection.totalSelected) {
+                            SectionCompleted
+                        } else {
+                            Color.White
+                        }
+                    Column(modifier = Modifier.background(backgroundColor)) {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable { onSectionClick(sectionSimbol) }
+                                .clickable { onSectionClick(popupSection.sectionSimbol) }
                                 .padding(vertical = 8.dp, horizontal = 4.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -153,3 +171,9 @@ fun GoToDialog(
         }
     )
 }
+
+private data class PopupSection(
+    val sectionSimbol: String,
+    val totalNumber: Int,
+    val totalSelected: Int
+)
