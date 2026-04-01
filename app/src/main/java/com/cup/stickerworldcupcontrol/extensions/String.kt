@@ -48,14 +48,12 @@ fun String.toStringId(): Int {
         "CRO" -> R.string.team_croatia
         "GHA" -> R.string.team_ghana
         "PAN" -> R.string.team_panama
-
-        // FIX IT
-        "UE1" -> R.string.team_playoff
-        "UE2" -> R.string.team_playoff
-        "UE3" -> R.string.team_playoff
-        "UE4" -> R.string.team_playoff
-        "FF1" -> R.string.team_playoff
-        "FF2" -> R.string.team_playoff
+        "BIH" -> R.string.team_bosnia
+        "SWE" -> R.string.team_sweden
+        "TUR" -> R.string.team_turkey
+        "CZE" -> R.string.team_czech_republic
+        "COD" -> R.string.team_dr_congo
+        "BOL" -> R.string.team_bolivia
 
         "FWC_END" -> R.string.section_fwc_end
 

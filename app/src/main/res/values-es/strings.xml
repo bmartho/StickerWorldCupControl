@@ -38,7 +38,6 @@
 
     <string name="section_fwc">Sección Inicial</string>
     <string name="section_fwc_end">Sección Final</string>
-    <string name="team_playoff">Repechaje</string>
 
     <string name="team_mexico">México</string>
     <string name="team_south_africa">Sudáfrica</string>
@@ -82,4 +81,11 @@
     <string name="team_croatia">Croacia</string>
     <string name="team_ghana">Ghana</string>
     <string name="team_panama">Panamá</string>
+
+    <string name="team_bosnia">Bosnia</string>
+    <string name="team_sweden">Suecia</string>
+    <string name="team_turkey">Turquía</string>
+    <string name="team_czech_republic">República Checa</string>
+    <string name="team_dr_congo">RD Congo</string>
+    <string name="team_bolivia">Bolivia</string>
 </resources>

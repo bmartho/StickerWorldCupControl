@@ -84,42 +84,47 @@ class MainActivity : ComponentActivity() {
 
                 ShareDialog(
                     onConfirm = { shareMissing, shareRepeated, shareNumberRepeated ->
-                        var shareText = ""
+                        val shareText = StringBuilder()
 
                         if (shareMissing) {
-                            shareText += headerMissing
-                            shareText += cells
-                                .filter { !it.isSelected }
-                                .joinToString(", ") { "${it.label}${it.text}" }
+                            shareText.append(headerMissing)
+                            val groupedMissing =
+                                cells.filter { !it.isSelected }.groupBy { it.label }
+
+                            groupedMissing.forEach { (label, items) ->
+                                val numbers = items.joinToString(", ") { it.text }
+                                shareText.append("$label: $numbers\n\n")
+                            }
 
                             if (shareRepeated) {
-                                shareText += "\n\n"
+                                shareText.append("\n")
                             }
                         }
 
                         if (shareRepeated) {
-                            shareText += headerRepeated
-                            shareText += cells
-                                .filter { it.numberRepeated > 0 }
-                                .joinToString(", ") {
-                                    val sticker = "${it.label}${it.text}"
-                                    if (!shareNumberRepeated) {
-                                        sticker
+                            shareText.append(headerRepeated)
+
+                            val groupedRepeated =
+                                cells.filter { it.numberRepeated > 0 }.groupBy { it.label }
+
+                            groupedRepeated.forEach { (label, items) ->
+                                val stickers = items.joinToString(", ") { cell ->
+                                    val stickerBase = cell.text
+                                    if (shareNumberRepeated && cell.numberRepeated > 1) {
+                                        "$stickerBase (${cell.numberRepeated})"
                                     } else {
-                                        if (it.numberRepeated <= 1) {
-                                            sticker
-                                        } else {
-                                            "$sticker (${it.numberRepeated})"
-                                        }
+                                        stickerBase
                                     }
                                 }
+                                shareText.append("$label: $stickers\n\n")
+                            }
                         }
 
                         val intent = Intent(Intent.ACTION_SEND).apply {
                             type = "text/plain"
-                            putExtra(Intent.EXTRA_TEXT, shareText)
+                            putExtra(Intent.EXTRA_TEXT, shareText.toString())
                         }
-                        startActivity(Intent.createChooser(intent, chooserTitle))
+                        context.startActivity(Intent.createChooser(intent, chooserTitle))
                         shareDialog = false
                     },
                     onDismiss = { shareDialog = false }

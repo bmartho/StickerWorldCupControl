@@ -33,11 +33,11 @@ val listOfSections: List<Sticker> = listOf(
     ),
 
     Sticker(
-        sectionSimbol = "UE4",
-        simbol = "UE4",
+        sectionSimbol = "CZE",
+        simbol = "CZE",
         fromNumber = 1,
         toNumber = 20
-    ), //FIX IT
+    ),
 
     /* ----------------------- GROUP B ------------------------- */
     Sticker(
@@ -48,11 +48,11 @@ val listOfSections: List<Sticker> = listOf(
     ),
 
     Sticker(
-        sectionSimbol = "UE1",
-        simbol = "UE1",
+        sectionSimbol = "BIH",
+        simbol = "BIH",
         fromNumber = 1,
         toNumber = 20
-    ), //FIX IT
+    ),
 
     Sticker(
         sectionSimbol = "QAT",
@@ -120,11 +120,11 @@ val listOfSections: List<Sticker> = listOf(
     ),
 
     Sticker(
-        sectionSimbol = "UE3",
-        simbol = "UE3",
+        sectionSimbol = "TUR",
+        simbol = "TUR",
         fromNumber = 1,
         toNumber = 20
-    ), // FIX IT
+    ),
 
     /* ----------------------- GROUP E ------------------------- */
     Sticker(
@@ -171,11 +171,11 @@ val listOfSections: List<Sticker> = listOf(
     ),
 
     Sticker(
-        sectionSimbol = "UE2",
-        simbol = "UE2",
+        sectionSimbol = "SWE",
+        simbol = "SWE",
         fromNumber = 1,
         toNumber = 20
-    ), // FIX IT
+    ),
 
     Sticker(
         sectionSimbol = "TUN",
@@ -258,11 +258,11 @@ val listOfSections: List<Sticker> = listOf(
     ),
 
     Sticker(
-        sectionSimbol = "FF2",
-        simbol = "FF2",
+        sectionSimbol = "BOL",
+        simbol = "BOL",
         fromNumber = 1,
         toNumber = 20
-    ), // FIX IT
+    ),
 
     Sticker(
         sectionSimbol = "NOR",
@@ -309,11 +309,11 @@ val listOfSections: List<Sticker> = listOf(
     ),
 
     Sticker(
-        sectionSimbol = "FF1",
-        simbol = "FF1",
+        sectionSimbol = "COD",
+        simbol = "COD",
         fromNumber = 1,
         toNumber = 20
-    ), // FIX IT
+    ),
 
     Sticker(
         sectionSimbol = "UZB",
