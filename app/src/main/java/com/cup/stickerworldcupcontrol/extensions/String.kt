@@ -53,7 +53,7 @@ fun String.toStringId(): Int {
         "TUR" -> R.string.team_turkey
         "CZE" -> R.string.team_czech_republic
         "COD" -> R.string.team_dr_congo
-        "BOL" -> R.string.team_bolivia
+        "IRQ" -> R.string.team_iraq
 
         "FWC_END" -> R.string.section_fwc_end
 

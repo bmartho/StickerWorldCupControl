@@ -7,7 +7,7 @@ val listOfSections: List<Sticker> = listOf(
         sectionSimbol = "FWC_START",
         simbol = "FWC",
         fromNumber = 1,
-        toNumber = 30
+        toNumber = 20
     ),
 
     /* ----------------------- GROUP A ------------------------- */
@@ -258,8 +258,8 @@ val listOfSections: List<Sticker> = listOf(
     ),
 
     Sticker(
-        sectionSimbol = "BOL",
-        simbol = "BOL",
+        sectionSimbol = "IRQ",
+        simbol = "IRQ",
         fromNumber = 1,
         toNumber = 20
     ),
@@ -358,14 +358,14 @@ val listOfSections: List<Sticker> = listOf(
         toNumber = 20
     ),
 
-    /* ----------------------- End ------------------------- */
+    /* ----------------------- End -------------------------
 
     Sticker(
         sectionSimbol = "FWC_END",
         simbol = "FWC",
         fromNumber = 31,
         toNumber = 50
-    )
+    )*/
 )
 
 data class Sticker(
