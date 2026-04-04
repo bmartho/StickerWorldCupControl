@@ -25,6 +25,7 @@ import com.cup.stickerworldcupcontrol.screens.AppViewModel
 import com.cup.stickerworldcupcontrol.screens.MainScreen
 import com.cup.stickerworldcupcontrol.ui.theme.StickerWorldCupControlTheme
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,7 +45,12 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
         CoroutineScope(Dispatchers.IO).launch {
-            // Initialize the Google Mobile Ads SDK on a background thread.
+            val requestConfiguration = MobileAds.getRequestConfiguration()
+                .toBuilder()
+                .setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_T)
+                .build()
+
+            MobileAds.setRequestConfiguration(requestConfiguration)
             MobileAds.initialize(this@MainActivity) {}
         }
 
