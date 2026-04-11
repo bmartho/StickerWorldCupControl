@@ -56,6 +56,13 @@ fun CellComponent(
         }
         .border(1.dp, Color.Black)
 
+    val numberOfSticker =
+        if (cell.number < 10 && cell.sectionSimbol != "COC") {
+            "0".plus(cell.number)
+        } else {
+            cell.number.toString()
+        }
+
     if (isRepeatedLayout) {
         Column(
             modifier = baseModifier,
@@ -64,7 +71,7 @@ fun CellComponent(
             Text(
                 modifier = Modifier
                     .padding(top = 2.dp),
-                text = "${cell.label} ${cell.text}",
+                text = "${cell.label} $numberOfSticker",
                 color = Color.Black,
                 maxLines = 1,
                 fontSize = 14.sp,
@@ -115,7 +122,7 @@ fun CellComponent(
             )
 
             Text(
-                text = cell.text,
+                text = numberOfSticker,
                 color = Color.Black,
                 maxLines = 1,
                 fontSize = 16.sp

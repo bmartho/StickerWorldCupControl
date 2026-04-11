@@ -75,19 +75,12 @@ abstract class AppDatabase : RoomDatabase() {
             var stickerId = 1
             for (section in listOfSections) {
                 for (sectionStickerNumber in section.fromNumber..section.toNumber) {
-                    val numberOfSticker =
-                        if (sectionStickerNumber < 10 && section.sectionSimbol != "COC") {
-                            "0".plus(sectionStickerNumber)
-                        } else {
-                            sectionStickerNumber.toString()
-                        }
-
                     if (section.simbol.isEmpty()) {
                         list.add(
                             Cell(
                                 id = stickerId,
-                                label = numberOfSticker,
-                                text = "",
+                                label = "0",
+                                number = 0,
                                 isSelected = false,
                                 numberRepeated = 0,
                                 sectionSimbol = section.sectionSimbol
@@ -98,7 +91,7 @@ abstract class AppDatabase : RoomDatabase() {
                             Cell(
                                 id = stickerId,
                                 label = section.simbol,
-                                text = numberOfSticker,
+                                number = sectionStickerNumber,
                                 isSelected = false,
                                 numberRepeated = 0,
                                 sectionSimbol = section.sectionSimbol

@@ -145,7 +145,7 @@ fun MainScreen(
                     horizontalArrangement = spacedBy(4.dp)
                 ) {
                     groupedCells.forEach { (sectionSimbol, cells) ->
-                        val sortedCells = cells.sortedBy { it.text }
+                        val sortedCells = cells.sortedBy { it.number }
                         item(
                             key = "header_$sectionSimbol",
                             span = { GridItemSpan(maxLineSpan) }

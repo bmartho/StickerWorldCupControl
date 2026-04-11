@@ -9,7 +9,7 @@ data class Cell(
     val id: Int,
 
     val label: String,
-    val text: String,
+    val number: Int,
     val numberRepeated: Int,
     val isSelected: Boolean,
     val sectionSimbol: String
