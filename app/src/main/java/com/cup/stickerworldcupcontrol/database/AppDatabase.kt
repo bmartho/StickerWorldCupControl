@@ -29,7 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
                 )
                     .addCallback(AppDatabaseCallback(scope))
                     .fallbackToDestructiveMigration(true)
-                    //.addMigrations(MIGRATION_1_2)
+                    //.addMigrations(MIGRATION_4_5)
                     .build()
 
                 INSTANCE = instance
@@ -114,13 +114,8 @@ abstract class AppDatabase : RoomDatabase() {
     }
 }
 
-val MIGRATION_1_2 = object : Migration(1, 2) {
+val MIGRATION_4_5 = object : Migration(4, 5) {
     override fun migrate(db: SupportSQLiteDatabase) {
-        db.execSQL("UPDATE cells SET label = 'AAA' WHERE label = 'UE4'")
-        db.execSQL("UPDATE cells SET label = 'BBB' WHERE label = 'UE1'")
-        db.execSQL("UPDATE cells SET label = 'CCC' WHERE label = 'UE3'")
-        db.execSQL("UPDATE cells SET label = 'DDD' WHERE label = 'UE2'")
-        db.execSQL("UPDATE cells SET label = 'EEE' WHERE label = 'FF2'")
-        db.execSQL("UPDATE cells SET label = 'FFF' WHERE label = 'FF1'")
+        db.execSQL("UPDATE cells SET text = '00' WHERE text = '20'")
     }
 }

@@ -27,8 +27,8 @@
     <string name="loading_stickers">Carregando figurinhas…</string>
     <string name="total_stickers">Total coladas: %1$s/%2$s (%3$s)</string>
 
-    <string name="share_header_missing">Figurinhas faltantes:\n\n</string>
-    <string name="share_header_repeated">Figurinhas repetidas:\n\n</string>
+    <string name="share_header_missing">Faltantes:\n\n</string>
+    <string name="share_header_repeated">Repetidas:\n\n</string>
     <string name="share_chooser_title">Compartilhar via</string>
 
     <string name="btn_share">Compartilhar</string>

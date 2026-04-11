@@ -145,6 +145,7 @@ fun MainScreen(
                     horizontalArrangement = spacedBy(4.dp)
                 ) {
                     groupedCells.forEach { (sectionSimbol, cells) ->
+                        val sortedCells = cells.sortedBy { it.text }
                         item(
                             key = "header_$sectionSimbol",
                             span = { GridItemSpan(maxLineSpan) }
@@ -164,10 +165,10 @@ fun MainScreen(
                         }
 
                         items(
-                            count = cells.size,
-                            key = { index -> cells[index].id },
+                            count = sortedCells.size,
+                            key = { index -> sortedCells[index].id },
                             contentType = { "sticker" }) { index ->
-                            val cell = cells[index]
+                            val cell = sortedCells[index]
                             val isRepeatedTab by remember {
                                 derivedStateOf { selectedTabIndex == 1 }
                             }
@@ -179,7 +180,7 @@ fun MainScreen(
                                 remember(cell) { { appViewModel.onDecreaseRepeatedClick(cell) } }
 
                             CellComponent(
-                                cell = cells[index],
+                                cell = sortedCells[index],
                                 isRepeatedLayout = isRepeatedTab,
                                 onClick = onCellClick,
                                 onIncreaseRepeated = onIncrease,

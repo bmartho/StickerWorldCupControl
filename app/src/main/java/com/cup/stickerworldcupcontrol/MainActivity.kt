@@ -98,12 +98,9 @@ class MainActivity : ComponentActivity() {
                                 cells.filter { !it.isSelected }.groupBy { it.label }
 
                             groupedMissing.forEach { (label, items) ->
-                                val numbers = items.joinToString(", ") { it.text }
+                                val numbers =
+                                    items.sortedBy { it.text }.joinToString(", ") { it.text }
                                 shareText.append("$label: $numbers\n\n")
-                            }
-
-                            if (shareRepeated) {
-                                shareText.append("\n")
                             }
                         }
 
@@ -114,14 +111,15 @@ class MainActivity : ComponentActivity() {
                                 cells.filter { it.numberRepeated > 0 }.groupBy { it.label }
 
                             groupedRepeated.forEach { (label, items) ->
-                                val stickers = items.joinToString(", ") { cell ->
-                                    val stickerBase = cell.text
-                                    if (shareNumberRepeated && cell.numberRepeated > 1) {
-                                        "$stickerBase (${cell.numberRepeated})"
-                                    } else {
-                                        stickerBase
+                                val stickers =
+                                    items.sortedBy { it.text }.joinToString(", ") { cell ->
+                                        val stickerBase = cell.text
+                                        if (shareNumberRepeated && cell.numberRepeated > 1) {
+                                            "$stickerBase (${cell.numberRepeated})"
+                                        } else {
+                                            stickerBase
+                                        }
                                     }
-                                }
                                 shareText.append("$label: $stickers\n\n")
                             }
                         }

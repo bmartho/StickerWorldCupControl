@@ -6,7 +6,7 @@
     <string name="about_creator">Creador: Android Brothers</string>
     <string name="about_version">Versión: %1$s</string>
 
-    <string name="reset_dialog_title">¿Vaciar Álbum?</string>
+    <string name="reset_dialog_title">¿Reiniciar Álbum?</string>
     <string name="reset_dialog_text">Esto borrará todas tus estampas marcadas. Esta acción no se puede deshacer.</string>
 
     <string name="share_dialog_title">¿Qué deseas compartir?</string>
@@ -27,8 +27,8 @@
     <string name="loading_stickers">Cargando estampas…</string>
     <string name="total_stickers">Total obtenidas: %1$s/%2$s (%3$s)</string>
 
-    <string name="share_header_missing">Estampas faltantes:\n\n</string>
-    <string name="share_header_repeated">Estampas repetidas:\n\n</string>
+    <string name="share_header_missing">Faltantes:\n\n</string>
+    <string name="share_header_repeated">Repetidas:\n\n</string>
     <string name="share_chooser_title">Compartir por</string>
 
     <string name="btn_share">Compartir</string>
@@ -37,12 +37,13 @@
     <string name="btn_cancel">Cancelar</string>
 
     <string name="section_fwc">Sección Inicial</string>
+    <string name="section_coke">Coca-Cola</string>
 
     <string name="team_mexico">México</string>
     <string name="team_south_africa">Sudáfrica</string>
     <string name="team_south_korea">Corea del Sur</string>
     <string name="team_canada">Canadá</string>
-    <string name="team_qatar">Catar</string>
+    <string name="team_qatar">Qatar</string>
     <string name="team_switzerland">Suiza</string>
     <string name="team_brazil">Brasil</string>
     <string name="team_morocco">Marruecos</string>
