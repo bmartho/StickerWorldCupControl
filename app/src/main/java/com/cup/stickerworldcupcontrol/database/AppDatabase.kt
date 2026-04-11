@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Cell::class], version = 3, exportSchema = false)
+@Database(entities = [Cell::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun cellDao(): CellDao
 
@@ -75,11 +75,12 @@ abstract class AppDatabase : RoomDatabase() {
             var stickerId = 1
             for (section in listOfSections) {
                 for (sectionStickerNumber in section.fromNumber..section.toNumber) {
-                    val numberOfSticker = if (sectionStickerNumber < 10) {
-                        "0".plus(sectionStickerNumber)
-                    } else {
-                        sectionStickerNumber.toString()
-                    }
+                    val numberOfSticker =
+                        if (sectionStickerNumber < 10 && section.sectionSimbol != "COC") {
+                            "0".plus(sectionStickerNumber)
+                        } else {
+                            sectionStickerNumber.toString()
+                        }
 
                     if (section.simbol.isEmpty()) {
                         list.add(

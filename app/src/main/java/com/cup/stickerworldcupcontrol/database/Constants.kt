@@ -358,14 +358,14 @@ val listOfSections: List<Sticker> = listOf(
         toNumber = 20
     ),
 
-    /* ----------------------- End -------------------------
+    /* ----------------------- End ------------------------- */
 
     Sticker(
-        sectionSimbol = "FWC_END",
-        simbol = "FWC",
-        fromNumber = 31,
-        toNumber = 50
-    )*/
+        sectionSimbol = "COC",
+        simbol = "CC",
+        fromNumber = 1,
+        toNumber = 14
+    ),
 )
 
 data class Sticker(
