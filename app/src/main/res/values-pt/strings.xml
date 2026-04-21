@@ -36,6 +36,7 @@
     <string name="btn_cancel">Cancelar</string>
 
     <string name="section_fwc">Seção Inicial</string>
+    <string name="section_fwc_end">Seção Final</string>
 
     <string name="team_mexico">México</string>
     <string name="team_south_africa">África do Sul</string>

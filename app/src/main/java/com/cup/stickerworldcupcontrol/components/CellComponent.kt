@@ -64,6 +64,11 @@ fun CellComponent(
         }
 
     if (isRepeatedLayout) {
+        val cellText = if (numberOfSticker == "00") {
+            "00"
+        } else {
+            "${cell.label} $numberOfSticker"
+        }
         Column(
             modifier = baseModifier,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -71,7 +76,7 @@ fun CellComponent(
             Text(
                 modifier = Modifier
                     .padding(top = 2.dp),
-                text = "${cell.label} $numberOfSticker",
+                text = cellText,
                 color = Color.Black,
                 maxLines = 1,
                 fontSize = 14.sp,
@@ -114,19 +119,28 @@ fun CellComponent(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = cell.label,
-                color = Color.Black,
-                maxLines = 1,
-                fontSize = 16.sp
-            )
+            if (numberOfSticker == "00") {
+                Text(
+                    text = "00",
+                    color = Color.Black,
+                    maxLines = 1,
+                    fontSize = 16.sp
+                )
+            } else {
+                Text(
+                    text = cell.label,
+                    color = Color.Black,
+                    maxLines = 1,
+                    fontSize = 16.sp
+                )
 
-            Text(
-                text = numberOfSticker,
-                color = Color.Black,
-                maxLines = 1,
-                fontSize = 16.sp
-            )
+                Text(
+                    text = numberOfSticker,
+                    color = Color.Black,
+                    maxLines = 1,
+                    fontSize = 16.sp
+                )
+            }
         }
     }
 }

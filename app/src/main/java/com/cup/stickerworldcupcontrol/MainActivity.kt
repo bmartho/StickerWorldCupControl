@@ -100,7 +100,13 @@ class MainActivity : ComponentActivity() {
                             groupedMissing.forEach { (label, items) ->
                                 val numbers =
                                     items.sortedBy { it.number }
-                                        .joinToString(", ") { "${it.number}" }
+                                        .joinToString(", ") {
+                                            if (it.number == 0) {
+                                                "00"
+                                            } else {
+                                                "${it.number}"
+                                            }
+                                        }
                                 shareText.append("$label: $numbers\n\n")
                             }
                         }
@@ -114,7 +120,11 @@ class MainActivity : ComponentActivity() {
                             groupedRepeated.forEach { (label, items) ->
                                 val stickers =
                                     items.sortedBy { it.number }.joinToString(", ") { cell ->
-                                        val stickerBase = "${cell.number}"
+                                        val stickerBase = if (cell.number == 0) {
+                                            "00"
+                                        } else {
+                                            "${cell.number}"
+                                        }
                                         if (shareNumberRepeated && cell.numberRepeated > 1) {
                                             "$stickerBase (${cell.numberRepeated})"
                                         } else {

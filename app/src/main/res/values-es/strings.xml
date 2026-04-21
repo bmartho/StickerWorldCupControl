@@ -37,6 +37,7 @@
     <string name="btn_cancel">Cancelar</string>
 
     <string name="section_fwc">Sección Inicial</string>
+    <string name="section_fwc_end">Sección Final</string>
     <string name="section_coke">Coca-Cola</string>
 
     <string name="team_mexico">México</string>
