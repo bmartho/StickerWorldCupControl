@@ -57,8 +57,8 @@ fun CellComponent(
         .border(1.dp, Color.Black)
 
     val numberOfSticker =
-        if (cell.number < 10 && cell.sectionSimbol != "COC") {
-            "0".plus(cell.number)
+        if (cell.number == 0) {
+            "00"
         } else {
             cell.number.toString()
         }
