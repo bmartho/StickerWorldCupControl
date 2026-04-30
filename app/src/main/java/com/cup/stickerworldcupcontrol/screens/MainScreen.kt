@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -102,6 +104,7 @@ fun MainScreen(
             val index = findSectionIndex(currentSection, groupedCells)
             if (index != -1) {
                 gridState.scrollToItem(index)
+                currentSection = ""
             }
         }
     }
@@ -162,36 +165,32 @@ fun MainScreen(
                             key = "header_$sectionSimbol",
                             span = { GridItemSpan(maxLineSpan) }
                         ) {
-                            val paddingTop = if (sectionSimbol != "FWC_START") 34.dp else 12.dp
+                            val paddingTop = if (sectionSimbol != "FWC_START") 8.dp else 12.dp
                             Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(top = paddingTop, bottom = 12.dp)
                             ) {
                                 if (groupHeaders.containsKey(sectionSimbol)) {
-                                    Column(
+                                    Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .padding(bottom = 12.dp)
+                                            .padding(bottom = 8.dp)
+                                            .background(
+                                                GroupTextColor.copy(alpha = 0.15f),
+                                                RoundedCornerShape(8.dp)
+                                            ), contentAlignment = Alignment.Center
                                     ) {
-                                        HorizontalDivider()
-
                                         Text(
                                             text = stringResource(
                                                 id = R.string.group_divider,
                                                 groupHeaders[sectionSimbol] ?: ""
-                                            ),
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(top = 8.dp, bottom = 8.dp),
-                                            textAlign = TextAlign.Center,
-                                            color = GroupTextColor,
-                                            maxLines = 1,
-                                            fontSize = 22.sp,
-                                            fontWeight = FontWeight.Bold,
+                                            ).uppercase(),
+                                            color = Secondary,
+                                            fontSize = 12.sp,
+                                            fontWeight = FontWeight.ExtraBold,
+                                            letterSpacing = 1.sp
                                         )
-
-                                        HorizontalDivider()
                                     }
                                 } else if (sectionSimbol == "FWC_END") {
                                     HorizontalDivider(
@@ -235,6 +234,13 @@ fun MainScreen(
                                 onIncreaseRepeated = onIncrease,
                                 onDecreaseRepeated = onDecrease
                             )
+                        }
+
+                        item(
+                            key = "spacer_$sectionSimbol",
+                            span = { GridItemSpan(maxLineSpan) }
+                        ) {
+                            Spacer(Modifier.height(20.dp))
                         }
                     }
                 }
@@ -292,7 +298,7 @@ private fun findSectionIndex(targetSimbol: String, groupedCells: Map<String, Lis
             return cumulativeIndex
         }
 
-        cumulativeIndex += 1 + items.size
+        cumulativeIndex += 2 + items.size
     }
     return -1
 }
