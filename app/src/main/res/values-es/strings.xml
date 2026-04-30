@@ -36,9 +36,10 @@
     <string name="btn_clear_all">Borrar Todo</string>
     <string name="btn_cancel">Cancelar</string>
 
+    <string name="group_divider">Grupo %1$s</string>
     <string name="section_fwc">Sección Inicial</string>
     <string name="section_fwc_end">Sección Final</string>
-    <string name="section_coke">Coca-Cola</string>
+    <string name="section_special">Especiales</string>
 
     <string name="team_mexico">México</string>
     <string name="team_south_africa">Sudáfrica</string>

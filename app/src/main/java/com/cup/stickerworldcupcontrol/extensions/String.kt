@@ -56,7 +56,7 @@ fun String.toStringId(): Int {
         "IRQ" -> R.string.team_iraq
 
         "FWC_END" -> R.string.section_fwc_end
-        "COC" -> R.string.section_coke
+        "COC" -> R.string.section_special
 
         else -> R.string.section_fwc
     }

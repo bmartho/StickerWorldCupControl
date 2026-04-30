@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -43,6 +44,7 @@ import com.cup.stickerworldcupcontrol.components.CellComponent
 import com.cup.stickerworldcupcontrol.components.GoToDialog
 import com.cup.stickerworldcupcontrol.database.models.Cell
 import com.cup.stickerworldcupcontrol.extensions.toStringId
+import com.cup.stickerworldcupcontrol.ui.theme.GroupTextColor
 import com.cup.stickerworldcupcontrol.ui.theme.Secondary
 import com.cup.stickerworldcupcontrol.ui.theme.TabIndicator
 
@@ -65,6 +67,16 @@ fun MainScreen(
     }
     val groupedCells = remember(cells) {
         cells.groupBy { it.sectionSimbol }
+    }
+
+    val groupHeaders = remember(groupedCells.size) {
+        val teamSections = groupedCells.keys.filter {
+            it != "FWC_START" && it != "FWC_END" && it != "COC"
+        }
+
+        teamSections.chunked(4).mapIndexed { index, teamsInGroup ->
+            teamsInGroup.first() to "${('A' + index)}"
+        }.toMap()
     }
 
     val titles = listOf(
@@ -151,17 +163,54 @@ fun MainScreen(
                             span = { GridItemSpan(maxLineSpan) }
                         ) {
                             val paddingTop = if (sectionSimbol != "FWC_START") 34.dp else 12.dp
-                            Text(
-                                text = stringResource(sectionSimbol.toStringId()),
+                            Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(top = paddingTop, bottom = 12.dp),
-                                textAlign = TextAlign.Center,
-                                color = Color.Black,
-                                maxLines = 1,
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.W900,
-                            )
+                                    .padding(top = paddingTop, bottom = 12.dp)
+                            ) {
+                                if (groupHeaders.containsKey(sectionSimbol)) {
+                                    Column(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(bottom = 12.dp)
+                                    ) {
+                                        HorizontalDivider()
+
+                                        Text(
+                                            text = stringResource(
+                                                id = R.string.group_divider,
+                                                groupHeaders[sectionSimbol] ?: ""
+                                            ),
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(top = 8.dp, bottom = 8.dp),
+                                            textAlign = TextAlign.Center,
+                                            color = GroupTextColor,
+                                            maxLines = 1,
+                                            fontSize = 22.sp,
+                                            fontWeight = FontWeight.Bold,
+                                        )
+
+                                        HorizontalDivider()
+                                    }
+                                } else if (sectionSimbol == "FWC_END") {
+                                    HorizontalDivider(
+                                        Modifier
+                                            .fillMaxWidth()
+                                            .padding(bottom = 8.dp)
+                                    )
+                                }
+                                Text(
+                                    text = stringResource(sectionSimbol.toStringId()),
+                                    modifier = Modifier
+                                        .fillMaxWidth(),
+                                    textAlign = TextAlign.Center,
+                                    color = Color.Black,
+                                    maxLines = 1,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.W900,
+                                )
+                            }
                         }
 
                         items(
