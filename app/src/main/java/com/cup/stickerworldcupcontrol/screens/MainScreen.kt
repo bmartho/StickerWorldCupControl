@@ -17,7 +17,6 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -192,13 +191,8 @@ fun MainScreen(
                                             letterSpacing = 1.sp
                                         )
                                     }
-                                } else if (sectionSimbol == "FWC_END") {
-                                    HorizontalDivider(
-                                        Modifier
-                                            .fillMaxWidth()
-                                            .padding(bottom = 8.dp)
-                                    )
                                 }
+
                                 Text(
                                     text = stringResource(sectionSimbol.toStringId()),
                                     modifier = Modifier
