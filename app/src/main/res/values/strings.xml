@@ -26,6 +26,7 @@
     <string name="tab_repeated">Repeated</string>
     <string name="loading_stickers">Loading stickers…</string>
     <string name="total_stickers">Total collected: %1$s/%2$s (%3$s)</string>
+    <string name="total_repeated">Total repeated: %1$s</string>
 
     <string name="share_header_missing">Missing:\n\n</string>
     <string name="share_header_repeated">Repeated:\n\n</string>
@@ -39,7 +40,7 @@
     <string name="group_divider">Group %1$s</string>
     <string name="section_fwc">Initial Section</string>
     <string name="section_fwc_end">End Section</string>
-    <string name="section_special">Specials</string>
+    <string name="section_special">Extras</string>
 
     <string name="team_mexico">Mexico</string>
     <string name="team_south_africa">South Africa</string>

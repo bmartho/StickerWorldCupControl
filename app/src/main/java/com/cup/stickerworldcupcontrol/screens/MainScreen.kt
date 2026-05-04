@@ -61,6 +61,7 @@ fun MainScreen(
     val cells by appViewModel.listCells.collectAsState(initial = emptyList())
     var selectedTabIndex by remember { mutableIntStateOf(0) }
     val collectedNumber = cells.count { it.isSelected }
+    val repeatedNumber = cells.sumOf { it.numberRepeated }
     val percentage = if (cells.isNotEmpty()) {
         (collectedNumber.toFloat() / cells.size.toFloat()) * 100
     } else {
@@ -116,15 +117,25 @@ fun MainScreen(
                 .padding(bottom = 4.dp),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = stringResource(
-                    R.string.total_stickers,
-                    collectedNumber,
-                    cells.size,
-                    "${"%.1f".format(percentage)}%"
-                ),
-                fontSize = 13.sp
-            )
+            if (selectedTabIndex == 0) {
+                Text(
+                    text = stringResource(
+                        R.string.total_stickers,
+                        collectedNumber,
+                        cells.size,
+                        "${"%.1f".format(percentage)}%"
+                    ),
+                    fontSize = 13.sp
+                )
+            } else {
+                Text(
+                    text = stringResource(
+                        R.string.total_repeated,
+                        repeatedNumber
+                    ),
+                    fontSize = 13.sp
+                )
+            }
         }
 
         Box(
